@@ -1,0 +1,29 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(node -v)",
+      "Bash(npm -v)",
+      "Bash(cd \"c:/Users/thiee/OneDrive/Máy tính/Fluter/Cowork_flutter\" && mkdir -p tools && echo \"created\")",
+      "PowerShell(node \"C:\\\\Users\\\\thiee\\\\OneDrive\\\\M�y t�nh\\\\Fluter\\\\Cowork_flutter\\\\tools\\\\screenshot.mjs\" home verify_test)",
+      "Bash(rm -rf /c/chrome-debug-test)",
+      "Read(//c//**)",
+      "Bash(rm -rf /c/chrome-debug-test 2>&1 | head -3; [ -d /c/chrome-debug-test ] && echo \"leftover_exists\" || echo \"removed\")",
+      "PowerShell(Start-Process $chrome -ArgumentList '--remote-debugging-port=9222','--user-data-dir=C:\\\\Users\\\\thiee\\\\chrome-debug','--new-window','https://order-flutter.nasys.vn/#/auth-route')",
+      "PowerShell($chrome = \"C:\\\\Program Files\\\\Google\\\\Chrome\\\\Application\\\\chrome.exe\")",
+      "PowerShell(\"chrome launched\")",
+      "PowerShell(node tools/screenshot.mjs home fail_move_table)",
+      "PowerShell(node tools/screenshot.mjs home fail_move_table --url=order-flutter)",
+      "PowerShell(node -e \"const {chromium}=require\\('playwright'\\); \\(async\\(\\)=>{const b=await chromium.connectOverCDP\\('http://localhost:9222'\\); const pages=b.contexts\\(\\).flatMap\\(c=>c.pages\\(\\)\\); for\\(const p of pages\\){console.log\\(JSON.stringify\\(p.url\\(\\)\\)\\);} await b.close\\(\\);}\\)\\(\\)\" 2>&1)",
+      "Bash(cd \"/c/Users/thiee/OneDrive/Máy tính/Fluter/Cowork_flutter\" && rm -rf screenshot/0614_1713_home screenshot/0614_1716_home && ls screenshot/)",
+      "PowerShell(Stop-Process -Name chrome -Force -ErrorAction SilentlyContinue)",
+      "PowerShell(\"chrome closed\")",
+      "Bash(rm -rf /c/Users/thiee/chrome-debug 2>&1 | head -2; [ -d /c/Users/thiee/chrome-debug ] && echo \"leftover\" || echo \"removed\")"
+    ],
+    "additionalDirectories": [
+      "c:\\Users\\thiee\\OneDrive\\Máy tính\\Fluter\\Cowork_flutter",
+      "C:\\chrome-debug-test",
+      "c:\\c\\Users\\thiee\\OneDrive\\Máy tính\\Fluter\\Cowork_flutter\\screenshot",
+      "C:\\Users\\thiee\\chrome-debug"
+    ]
+  }
+}

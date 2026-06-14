@@ -1,4 +1,4 @@
-# Kết quả kiểm thử — Menu HOME (phiên 3 — chạy tiếp theo run_home.md)
+  # Kết quả kiểm thử — Menu HOME (phiên 3 — chạy tiếp theo run_home.md)
 
 - Ngày giờ chạy: 12/06/2026, ~13:05–13:34 (giờ VN)
 - Môi trường: https://order-flutter.nasys.vn (store `thientester`, user `admin`, vai trò Thu ngân/Casher), chi nhánh CN1

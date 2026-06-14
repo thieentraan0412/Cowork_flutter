@@ -47,6 +47,7 @@
 | 1.3.8 | ☐ | Tùy chọn hiển thị trong dòng món | 1. Sau khi bấm "Chọn", quan sát dòng món vừa thêm trong hóa đơn 2. Kiểm tra thông tin tùy chọn hiển thị bên dưới tên món | Hiển thị rõ các tùy chọn đã chọn (VD: Size S, Nước ngọt: Pepsi 5%) |
 
 1.4 Hóa đơn / Giỏ hàng
+    Vào file link.md, truy cập link [admin](https://table1.klkim.com/v2/system/parameter/admin) để cấu hình "Thuế trên đơn bán hàng" khi cần
 
 | STT | ✓ | Testcase | Các bước thực hiện | Kết quả mong đợi |
 |-----|---|----------|--------------------|------------------|
@@ -63,7 +64,6 @@
 | 1.4.11 | ☐ | Tổng tiền thanh toán | 1. Thêm món, nhập phụ thu và giảm giá 2. Tính tay: Tổng tiền + Phụ thu − Giảm giá + Thuế 3. So sánh với "Tổng tiền thanh toán" hiển thị (màu đỏ) | Tổng tiền thanh toán = Tổng tiền + Phụ thu − Giảm giá + Thuế |
 | 1.4.12 | ☐ | Phụ thu | 1. Trong hóa đơn, bấm icon bút tại dòng "Phụ thu" 2. Nhập giá trị phụ thu 3. Quan sát Tổng tiền thanh toán | Phụ thu cộng đúng vào tổng |
 | 1.4.13 | ☐ | Giảm giá | 1. vào link cashier Chọn bàn,   trang order món,  chọn thêm 5 món vào hóa đơn. 2. Click vào "giảm giá" 3. chọn vào giảm giá trực tiếp, click vào "Chọn" chọn 1 thông tin cụ thể ,  sau đó % tiền vào --> click vào "xác nhận". 4. Click vào "Thanh toán" -> click vào "Xác nhận"  5. vào trang admin -->  vào trang "quản lí đơn hàng" 6. kiểm tra hóa đơn sinh ra có đúng với hóa đơn lúc cashier thanh toán | số tiền thanh toán phải đúng
-| 1.4.14 | ☐ | Gợi ý nhanh tiền mặt | 1. Tại hóa đơn có tổng tiền thanh toán xác định 2. Quan sát các nút gợi ý số tiền (VD: 120,000đ, 150,000đ, 200,000đ) phía trên ô Tiền mặt | Các giá trị gợi ý đều ≥ tổng thanh toán và là mệnh giá hợp lý |
 | 1.4.15 | ☐ | Combo / Set menu | 1. Trong lưới thực đơn, tìm và bấm vào một món Combo hoặc Set menu 2. Quan sát dòng món trong hóa đơn | Hiển thị đúng tên combo, thành phần kèm theo và giá |(note: số tiền hiện ở :Thêm vào giỏ hàng đã cộng món kèm theo)
 | 1.4.16 | ☐ | Chọn khách hàng | 1. Trong hóa đơn, bấm vào dropdown "Khách lẻ" góc trên phải panel 2. Tìm và chọn một khách hàng có sẵn 3. Quan sát thông tin khách trên hóa đơn | Thông tin khách hàng gắn vào hóa đơn |
 | 1.4.17 | ☐ | Nhiều hóa đơn / 1 bàn | 1. Tại màn hình Order của một bàn, bấm nút + bên cạnh tab hóa đơn hiện tại 2. Thêm món khác nhau vào từng tab 3. Chuyển qua lại giữa 2 tab | Mỗi tab là hóa đơn độc lập, tổng tiền không ảnh hưởng nhau |
