@@ -37,7 +37,7 @@
 
 | STT | ✓ | Testcase | Các bước thực hiện | Kết quả mong đợi |
 |-----|---|----------|--------------------|------------------|
-| 1.3.1 | ☐ | Mở modal khi món có tùy chọn | 1. Tại màn hình Order, bấm vào một món có cấu hình tùy chọn (thuộc tính hoặc món thêm) 2. Quan sát màn hình | Hiện modal "Chọn món kèm theo" |
+| 1.3.1 | ☐ | Mở modal khi mòn có tùy chọn | 1. Tại màn hình Order, bấm vào một món có cấu hình tùy chọn (thuộc tính hoặc món thêm) 2. Quan sát màn hình | Hiện modal "Chọn món kèm theo" |
 | 1.3.2 | ☐ | Chọn thuộc tính (Size, độ ngọt...) | 1. Trong modal, tìm nhóm thuộc tính (VD: Size, Độ ngọt) 2. Bấm chọn một giá trị bất kỳ trong nhóm 3. Quan sát lựa chọn được ghi nhận và giá thay đổi nếu có | Ghi nhận lựa chọn, giá cập nhật nếu giá trị đó có phụ thu |
 | 1.3.3 | ☐ | Chọn món thêm | 1. Trong modal, tìm nhóm "Món thêm" (VD: Nước ngọt) 2. Tích chọn một hoặc nhiều món thêm 3. Điều chỉnh số lượng từng món thêm nếu cần | Ghi nhận đúng các món thêm và số lượng đã chọn |
 | 1.3.4 | ☐ | Tăng/giảm số lượng | 1. Trong modal, tìm nút +/- bên cạnh tên món chính 2. Bấm + để tăng, bấm - để giảm 3. Thử giảm về 1 rồi tiếp tục bấm - | Thay đổi đúng, không xuống dưới 1 |
@@ -86,6 +86,7 @@
 
 
 1.6 Xác nhận đơn (tại bàn / QR / mang về)
+
 try cập link đặt món QR_BAN để đặt món 
 
 | STT | ✓ | Testcase | Các bước thực hiện | Kết quả mong đợi |
@@ -114,7 +115,7 @@ try cập link đặt món QR_BAN để đặt món
 | 1.8.1 | ☐ | Mở chức năng chuyển bàn từ bàn đang dùng | 1. Từ Trang chủ, bấm vào một bàn đang có đơn (trạng thái "Đang sử dụng") 2. Tại màn hình Order, bấm icon "Chuyển bàn" trên thanh công cụ (hoặc menu `...` → chọn Chuyển bàn) 3. Quan sát màn hình mở ra | Hiện danh sách bàn đích để chọn |
 | 1.8.2 | ☐ | Bàn đích (bàn trống) hiển thị màu vàng | 1. Mở chức năng chuyển bàn từ bàn đang dùng 2. Quan sát màu sắc các thẻ bàn trong danh sách bàn đích 3. So sánh màu thẻ bàn trống và bàn đang dùng | Các bàn trống hiển thị màu vàng để gợi ý; bàn đang dùng hiển thị màu khác (xám hoặc tối) |
 | 1.8.3 | ☐ | Chọn bàn trống để chuyển | 1. Mở chức năng chuyển bàn từ "Bàn A" đang có đơn 2. Trong danh sách bàn đích, bấm chọn "Bàn B" đang trống (màu vàng) 3. Xác nhận chuyển bàn 4. Quan sát trạng thái Bàn A và Bàn B ngoài Trang chủ | Toàn bộ đơn của Bàn A chuyển sang Bàn B; Bàn A trở về trạng thái "trống"; Bàn B chuyển sang "Đang sử dụng" với đúng dữ liệu đơn cũ |
-| 1.8.4 | ☐ | Chỉ cho chọn bàn trống | 1. Mở chức năng chuyển bàn từ Bàn A 2. Trong danh sách bàn đích, thử bấm vào một bàn "đang sử dụng" 3. Quan sát phản hồi | Hệ thống không cho chọn bàn đang dùng; thẻ bàn đó bị mờ, không thể bấm hoặc hiện thông báo không hợp lệ |
+| 1.8.4 | ☐ | Chỉ cho chọn bàn trống | 1. Mở chức năng chuyển bàn từ Bàn A 2. Quan sát phản hồi | Hệ thống thông báo đang không có đơn |
 | 1.8.5 | ☐ | Chưa mở ca / không có quyền | 1. Đảm bảo ca chưa mở hoặc dùng tài khoản không có quyền chuyển bàn 2. Vào màn hình Order của bàn đang có đơn 3. Tìm và bấm nút Chuyển bàn | Hệ thống chặn thao tác, hiển thị thông báo "Chưa mở ca" hoặc "Không có quyền" |
 | 1.8.6 | ☐ | Dữ liệu đơn giữ nguyên sau chuyển bàn | 1. Ghi nhận danh sách món, số lượng, ghi chú và tổng tiền tại Bàn A trước khi chuyển 2. Chuyển sang Bàn B trống 3. Vào màn hình Order của Bàn B, kiểm tra lại toàn bộ thông tin | Danh sách món, số lượng, ghi chú, tổng tiền tại Bàn B khớp hoàn toàn với Bàn A trước khi chuyển |
 | 1.8.7 | ☐ | Trạng thái thẻ bàn cập nhật ngay sau chuyển | 1. Thực hiện chuyển Bàn A sang Bàn B 2. Xác nhận xong, ngay lập tức quay về "Trang chủ" (không reload thủ công) 3. Quan sát thẻ Bàn A và Bàn B | Bàn A hiển thị "trống" ngay lập tức; Bàn B hiển thị "Đang sử dụng" với đúng tổng tiền — không cần F5 mới thấy |
@@ -185,6 +186,7 @@ try cập link đặt món QR_BAN để đặt món
 | 1.11.6 | ☐ | Đơn không thỏa điều kiện | 1. Tạo đơn với giá trị thấp hoặc không đủ điều kiện áp hàng tặng 2. Thử mở chức năng hàng tặng 3. Quan sát phản hồi | Hệ thống không cho áp, hiển thị thông báo phù hợp |
 
 1.12 Áp dụng khuyến mãi
+Lưu ý: Đơn phải có sản phẩm, đơn đủ điều kiện thì mới hiện khuyến mãi lên
 
 | STT | ✓ | Testcase | Các bước thực hiện | Kết quả mong đợi |
 |-----|---|----------|--------------------|------------------|

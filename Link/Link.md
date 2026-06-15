@@ -1,8 +1,14 @@
-Link Đặt món QR: `https://table1.klkim.com/v2/order/qr?store_id=order_table_thientester&table=ab4393c747f4f3f38a8d904e1602863c&package_id=3&locale=vi`
+Link Đặt món QR: https://table1.klkim.com/v2/system/table
+    Hãy truy cập link --> quét mã QR bàn --> order món 
 
 link admin:https://table1.klkim.com/v2/dashboard
 
 link Bếp: https://table1.klkim.com/v2/kitchen
+
+link CTKM: https://table1.klkim.com/v2/crm/promotion-program
+
+Link setting: https://table1.klkim.com/v2/system/parameter/admin
+    Link này để vào kiểm tra bật tắt setting ( lưu ý: khi đổi setting thì thu ngân cần đăng xuất, đăng nhập lại)
 
 tài khoản đăng nhâp:
 ID store: thientester
