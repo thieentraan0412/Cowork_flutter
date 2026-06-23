@@ -19,7 +19,7 @@
 | 1.1.11 | ☐ | Nút "Xác nhận" trên thẻ | 1. Tại Trang chủ, lọc tab "Chờ xác nhận" 2. Tìm thẻ bàn có nút "Xác nhận" 3. Bấm nút "Xác nhận" trực tiếp trên thẻ bàn 4. Quan sát trạng thái thẻ bàn sau thao tác | Đơn được xác nhận, trạng thái cập nhật sang "Đang sử dụng" |
 | 1.1.12 | ☐ | Bấm vào bàn | 1. Tại Trang chủ, chọn bất kỳ thẻ bàn nào 2. Bấm vào vùng thân thẻ bàn 3. Quan sát màn hình mở ra | Mở màn hình Order của bàn đó |
 | 1.1.13 | ☐ | Thêm đơn mang về | 1. Tại Trang chủ, tìm thẻ "Bàn mang về" (thẻ có icon Takeaway, vị trí đầu danh sách) 2. Bấm vào thẻ đó 3. Quan sát màn hình mở ra | Mở màn hình Order ở chế độ Mang đi |
-| 1.1.14 | ☐ | Số liệu các tab nhất quán | 1. Tại Trang chủ, ghi lại số đếm từng tab: "Bàn trống (n1)", "Đang sử dụng (n2)", "Chờ xác nhận (n3)", "Chờ thanh toán (n4)" 2. Tính tổng: n1 + n2 + n3 + n4 3. So sánh với số hiển thị tại tab "Tất cả" | Tổng các tab = tổng tất cả |
+| 1.1.14 | ☐ | Số liệu các tab nhất quán | 1. Tại Trang chủ, ghi lại số đếm từng tab: "Bàn trống (n1)", "Đang sử dụng (n2)", "Chờ xác nhận (n3)", "Chờ thanh toán (n4)" 2. Tính tổng: n1 + n2 + n3 + n4 3. So sánh với số hiển thị tại tab "Tất cả" (Note: "Bàn mang về" được tính vào "Tất cả" nhưng không thuộc nhóm trạng thái nào) | Tổng các tab = tổng tất cả | 
 
 1.2 Menu (Thực đơn)  click vào bàn bất kì 
 
@@ -227,4 +227,3 @@ Lưu ý: Đơn phải có sản phẩm, đơn đủ điều kiện thì mới hi
 | 1.15.4 | ☐ | Mất mạng khi thanh toán | 1. Chuẩn bị đơn hàng sẵn sàng thanh toán 2. Tắt mạng (ngắt WiFi hoặc kéo cáp) 3. Bấm "Thanh toán" 4. Bật lại mạng, kiểm tra trong Lịch sử đơn | Đơn không bị tạo trùng, dữ liệu nhất quán |
 | 1.15.5 | ☐ | Hai thu ngân cùng 1 bàn | 1. Mở bàn đang có đơn trên 2 thiết bị/tab khác nhau 2. Cả 2 cùng thêm món hoặc chỉnh sửa đồng thời 3. Quan sát kết quả trên cả 2 thiết bị | Không bị ghi đè hoặc mất dữ liệu của nhau |
 | 1.15.6 | ☐ | Ghi chú có dấu / ký tự đặc biệt | 1. Trong hóa đơn, tích checkbox "Ghi chú" trên một dòng món 2. Nhập nội dung có dấu tiếng Việt và ký tự đặc biệt (VD: @, #, !, ...) 3. Lưu và quan sát lại dòng món | Ghi chú lưu và hiển thị đúng, không bị lỗi ký tự |
-

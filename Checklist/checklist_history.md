@@ -11,7 +11,7 @@
 | 1.1.4 | ☐ | Lọc tab "Đặt online" | 1. Vào trang lịch sử 2. Bấm tab "Đặt online" 3. Quan sát danh sách | Chỉ hiện đơn đặt online; nếu không có đơn nào thì danh sách rỗng |
 | 1.1.5 | ☐ | Dropdown "Chọn bàn" | 1. Vào trang lịch sử 2. Tìm dropdown "Chọn bàn" trên thanh bộ lọc 3. Bấm dropdown, chọn một bàn cụ thể (VD: Bàn 1) 4. Quan sát danh sách đơn | Chỉ hiện các đơn thuộc bàn đã chọn |
 | 1.1.6 | ☐ | (Mới) Bàn không bị trùng tên trong dropdown chọn bàn | 1. Vào tab "Tại bàn" 2. Mở dropdown "Tất cả bàn" 3. Quan sát danh sách bàn | Mỗi bàn chỉ xuất hiện 1 lần; chọn bàn có đơn phải ra đúng đơn của bàn đó (phát hiện 0616: "ban 1"/"ban 2" bị lặp 2 lần, chọn "ban 1" mục đầu ra rỗng dù có đơn ban1) |
-| 1.1.7 | ☐ | (Mới) Tab "Tại bàn" loại đúng đơn mang về | 1. Vào tab "Tại bàn" 2. Quan sát danh sách & tổng số đơn | Chỉ hiển thị đơn tại bàn, KHÔNG gồm đơn "Mang về". **BUG 0619: tab "Tại bàn" vẫn hiển thị cả đơn "Bàn mang về" (tổng = tab Tất cả)** |
+| 1.1.7 | ☐ | (Mới) Tab "Tại bàn" loại đúng đơn mang về | 1. Vào tab "Tại bàn" 2. Quan sát danh sách & tổng số đơn | Chỉ hiển thị đơn tại bàn, KHÔNG gồm đơn "Mang về".|
 
 1.2 Tìm kiếm & bộ lọc
 
@@ -33,10 +33,17 @@
 | 1.2.14 | ☐ | Khoảng ngày: Tùy chọn | 1. Vào trang lịch sử 2. Bấm bộ lọc thời gian, chọn "Tùy chọn" 3. Nhập ngày bắt đầu và ngày kết thúc cụ thể 4. Xác nhận và quan sát danh sách | Chỉ hiện đơn trong khoảng ngày đã nhập |
 | 1.2.15 | ☐ | Kết hợp nhiều bộ lọc | 1. Vào trang lịch sử 2. Bật đồng thời: tab "Tại bàn" + Trạng thái "Đã thanh toán" + Thời gian "Hôm nay" 3. Quan sát danh sách kết quả | Chỉ hiện đơn thỏa tất cả điều kiện đã chọn |
 | 1.2.16 | ☐ | Ngày bắt đầu > ngày kết thúc | 1. Vào trang lịch sử, bật lọc thời gian tùy chọn 2. Nhập ngày bắt đầu lớn hơn ngày kết thúc (VD: từ 10/06 đến 01/06) 3. Xác nhận và quan sát phản hồi | Hệ thống chặn hoặc hiển thị thông báo lỗi, không trả kết quả sai |
-| 1.2.17 | ☐ | (Mới) Lọc khoảng ngày nhiều ngày phải trả đúng đơn trong khoảng | 1. Đảm bảo có đơn ở ≥2 ngày liên tiếp (VD hôm nay + hôm qua) 2. Chọn "Tuần này" (và "Tháng này") 3. Quan sát danh sách | Danh sách hiển thị TẤT CẢ đơn trong khoảng (≥ tổng đơn của các ngày trong khoảng). **BUG 0616: khoảng nhiều ngày trả về RỖNG dù chứa ngày có đơn — chỉ mốc 1 ngày chạy đúng** |
-| 1.2.18 | ☐ | (Mới) Lọc theo trạng thái thực tế của hệ thống | 1. Mở dropdown "Trạng thái" 2. Lần lượt chọn: Đang xử lý / Hoàn thành / Đã hủy / Đã trả hàng / Chờ thanh toán 3. Quan sát danh sách mỗi lần | Mỗi trạng thái lọc đúng nhóm đơn tương ứng. (Lưu ý: tập trạng thái thực tế khác checklist gốc — không có "Công nợ"; "Hoàn thành"=đã thanh toán, "Chờ thanh toán"=chưa thanh toán) — **0619: tập trạng thái nay ĐÃ khớp checklist gốc: Đã thanh toán / Chưa thanh toán / Đã hủy / Đã xử lý trả hàng / Công nợ** |
-| 1.2.19 | ☐ | (Mới) Tìm kiếm theo tên khách hàng | 1. Mở chi tiết 1 đơn có tên khách (VD "tranvana") 2. Nhập đúng tên khách vào ô tìm kiếm 3. Enter, quan sát | Trả về đơn của khách đó. **BUG 0619: tìm theo TÊN khách (tranvana) → rỗng; trong khi tìm theo mã đơn & SĐT vẫn đúng** (0623: vẫn lỗi) |
+| 1.2.17 | ☐ | (Mới) Lọc khoảng ngày nhiều ngày phải trả đúng đơn trong khoảng | 1. Đảm bảo có đơn ở ≥2 ngày liên tiếp (VD hôm nay + hôm qua) 2. Chọn "Tuần này" (và "Tháng này") 3. Quan sát danh sách | Danh sách hiển thị TẤT CẢ đơn trong khoảng (≥ tổng đơn của các ngày trong khoảng).|
+| 1.2.18 | ☐ | (Mới) Lọc theo trạng thái thực tế của hệ thống | 1. Mở dropdown "Trạng thái" 2. Lần lượt chọn: Đang xử lý / Hoàn thành / Đã hủy / Đã trả hàng / Chờ thanh toán 3. Quan sát danh sách mỗi lần | Mỗi trạng thái lọc đúng nhóm đơn tương ứng. (Lưu ý: tập trạng thái thực tế khác checklist gốc — không có "Công nợ"; "Hoàn thành"=đã thanh toán, "Chờ thanh toán"=chưa thanh toán) 
+| 1.2.19 | ☐ | (Mới) Tìm kiếm theo tên khách hàng | 1. Mở chi tiết 1 đơn có tên khách (VD "tranvana") 2. Nhập đúng tên khách vào ô tìm kiếm 3. Enter, quan sát | Trả về đơn của khách đó. (0623: vẫn lỗi) |
 | 1.2.20 | ☐ | (Mới) Nút "Xuất Excel" | 1. Vào trang lịch sử, đặt bộ lọc (VD Tháng này) 2. Bấm nút "Xuất Excel" trên thanh bộ lọc 3. Quan sát file tải về | Xuất ra file Excel chứa đúng danh sách đơn theo bộ lọc đang áp dụng |
+| 1.2.21 | ☐ | (Mới) Khoảng ngày: Quý này | 1. Vào trang lịch sử 2. Bấm bộ lọc thời gian 3. Chọn "Quý này" 4. Bấm "Áp dụng", quan sát danh sách | Chỉ hiện đơn trong quý hiện tại (VD 01/04–30/06/2026); tổng ≥ số đơn của "Tháng này" (phát hiện 0623: hộp thoại thời gian có thêm mốc "Quý này" & "Năm nay" chưa có trong checklist gốc) |
+| 1.2.22 | ☐ | (Mới) Khoảng ngày: Năm nay | 1. Vào trang lịch sử 2. Bấm bộ lọc thời gian 3. Chọn "Năm nay" 4. Bấm "Áp dụng", quan sát danh sách | Chỉ hiện đơn trong năm hiện tại (01/01–31/12/2026) |
+| 1.2.23 | ☐ | (Mới) Lịch chặn chọn ngày tương lai | 1. Mở bộ lọc thời gian → xem lịch tháng hiện tại 2. Thử bấm chọn một ngày trong tương lai (VD 24–30/06 khi hôm nay 23/06) | Các ngày tương lai bị làm mờ và không cho chọn; chỉ chọn được ngày ≤ hôm nay |
+| 1.2.24 | ☐ | (Mới) Hộp thoại ngày — nút "Hủy" | 1. Mở bộ lọc thời gian 2. Chọn một mốc khác mốc hiện tại (VD "Tháng này") 3. Bấm "Hủy" | Hộp thoại đóng, KHÔNG áp dụng thay đổi; bộ lọc giữ nguyên mốc trước đó |
+| 1.2.25 | ☐ | (Mới) Hộp thoại ngày — nút "Áp dụng" | 1. Mở bộ lọc thời gian 2. Chọn một mốc (VD "Tháng này") 3. Bấm "Áp dụng" | Hộp thoại đóng, danh sách cập nhật theo mốc đã chọn; nhãn nút bộ lọc đổi tương ứng |
+| 1.2.26 | ☐ | (Mới) Bộ lọc mặc định khi mở trang | 1. Đăng nhập, vào Lịch sử lần đầu 2. Quan sát trạng thái các bộ lọc | Mặc định: tab "Tất cả", Trạng thái "Tất cả", "Tất cả bàn", thời gian "Hôm nay"; danh sách chỉ hiện đơn hôm nay |
+| 1.2.27 | ☐ | (Mới) Dropdown "Trạng thái" đủ mục | 1. Mở dropdown "Trạng thái" 2. Quan sát danh sách mục | Có đúng 6 mục: Tất cả / Đã thanh toán / Chưa thanh toán / Đã hủy / Đã xử lý trả hàng / Công nợ (xác nhận 0623) |
 
 1.3 Danh sách đơn
 
@@ -47,6 +54,7 @@
 | 1.3.3 | ☐ | Trạng thái HĐĐT hiển thị đúng | 1. Vào trang lịch sử 2. Tìm đơn có cột/nhãn trạng thái hóa đơn điện tử (HĐĐT) 3. Quan sát giá trị hiển thị | Hiển thị đúng trạng thái: "Không xác định" hoặc "Chờ ký" tùy theo đơn |
 | 1.3.4 | ☐ | Màu thẻ theo trạng thái | 1. Vào trang lịch sử 2. Quan sát màu nền hoặc màu viền các thẻ đơn 3. So sánh màu giữa đơn chưa thanh toán và đơn đã thanh toán | Đơn chưa thanh toán màu xám; đơn đã thanh toán màu xanh |
 | 1.3.5 | ☐ | Số tiền trên thẻ khớp chi tiết đơn | 1. Quan sát số tiền hiển thị trên thẻ đơn, ghi nhận lại 2. Bấm vào thẻ đơn đó để mở chi tiết 3. So sánh số tiền trong modal chi tiết với số tiền trên thẻ | Số tiền trên thẻ = tổng tiền thanh toán trong chi tiết đơn |
+| 1.3.6 | ☐ | (Mới) Bộ đếm "Tổng: X đơn" | 1. Vào trang lịch sử 2. Quan sát dòng "Tổng: X đơn" phía trên danh sách 3. Lần lượt đổi bộ lọc (tab / trạng thái / thời gian) | Số ở "Tổng" khớp số thẻ đơn đang hiển thị và cập nhật đúng mỗi khi đổi bộ lọc |
 
 1.4 Chi tiết đơn hàng
 
@@ -60,3 +68,8 @@
 | 1.4.6 | ☐ | Tổng tiền thanh toán tính đúng công thức | 1. Mở modal chi tiết đơn 2. Ghi nhận: Tổng tiền hàng, Phụ thu, Giảm giá, Tiền điểm, VAT 3. Tính tay: Tổng hàng + Phụ thu − Giảm giá − Tiền điểm + VAT 4. So sánh với "Tổng tiền thanh toán" hiển thị | Tổng tiền thanh toán = Tổng hàng + Phụ thu − Giảm giá − Tiền điểm + VAT |
 | 1.4.7 | ☐ | Phương thức thanh toán hiển thị đúng | 1. Mở modal chi tiết đơn đã thanh toán 2. Tìm mục "Phương thức thanh toán" trong modal 3. So sánh với phương thức đã chọn lúc thanh toán (Tiền mặt / CK / Thẻ / QR) | Phương thức hiển thị đúng với lúc thanh toán thực tế |
 | 1.4.8 | ☐ | Bấm "Đóng" thoát modal | 1. Mở modal chi tiết đơn 2. Bấm nút "Đóng" 3. Quan sát màn hình và bộ lọc đang áp | Modal đóng lại, quay về danh sách; bộ lọc và trang hiện tại giữ nguyên |
+| 1.4.9 | ☐ | (Mới) Bấm thân thẻ không mở chi tiết | 1. Vào trang lịch sử 2. Bấm vào phần thân thẻ đơn (không phải nút "...") 3. Quan sát màn hình | KHÔNG mở modal khi bấm thân thẻ; chỉ mở được chi tiết qua menu "..." → "Chi tiết" (xác nhận 0623) |
+| 1.4.10 | ☐ | (Mới) Menu "..." của đơn chưa thanh toán | 1. Bấm nút "..." trên thẻ đơn ở trạng thái "Chưa thanh toán" 2. Quan sát các mục trong menu | Menu chỉ có mục "Chi tiết" (đơn chưa thanh toán không có In/Hủy/Trả hàng) — cần đối chiếu thêm menu của đơn đã thanh toán |
+| 1.4.11 | ☐ | (Mới) Modal hiển thị "Số khách" | 1. Mở modal chi tiết một đơn 2. Tìm dòng "Số khách" trong khối "Thông tin đơn hàng" | Hiển thị đúng số khách của đơn (VD: 1) |
+| 1.4.12 | ☐ | (Mới) Modal hiển thị mục "Ghi chú" | 1. Mở modal chi tiết một đơn 2. Tìm mục "Ghi chú" bên dưới khối thông tin đơn | Có ô "Ghi chú": hiển thị nội dung nếu đơn có ghi chú, để trống nếu không |
+| 1.4.13 | ☐ | (Mới) Tiêu đề & badge trạng thái trong modal | 1. Mở modal chi tiết một đơn 2. Quan sát tiêu đề và nhãn trạng thái góc phải | Tiêu đề "Chi tiết hóa đơn"; hiển thị badge trạng thái (VD "Chưa thanh toán") khớp trạng thái trên thẻ |
