@@ -10,6 +10,8 @@
 | 1.1.3 | ☐ | Lọc tab "Mang về" | 1. Vào trang lịch sử 2. Bấm tab "Mang về" 3. Quan sát danh sách | Chỉ hiện các đơn mang về |
 | 1.1.4 | ☐ | Lọc tab "Đặt online" | 1. Vào trang lịch sử 2. Bấm tab "Đặt online" 3. Quan sát danh sách | Chỉ hiện đơn đặt online; nếu không có đơn nào thì danh sách rỗng |
 | 1.1.5 | ☐ | Dropdown "Chọn bàn" | 1. Vào trang lịch sử 2. Tìm dropdown "Chọn bàn" trên thanh bộ lọc 3. Bấm dropdown, chọn một bàn cụ thể (VD: Bàn 1) 4. Quan sát danh sách đơn | Chỉ hiện các đơn thuộc bàn đã chọn |
+| 1.1.6 | ☐ | (Mới) Bàn không bị trùng tên trong dropdown chọn bàn | 1. Vào tab "Tại bàn" 2. Mở dropdown "Tất cả bàn" 3. Quan sát danh sách bàn | Mỗi bàn chỉ xuất hiện 1 lần; chọn bàn có đơn phải ra đúng đơn của bàn đó (phát hiện 0616: "ban 1"/"ban 2" bị lặp 2 lần, chọn "ban 1" mục đầu ra rỗng dù có đơn ban1) |
+| 1.1.7 | ☐ | (Mới) Tab "Tại bàn" loại đúng đơn mang về | 1. Vào tab "Tại bàn" 2. Quan sát danh sách & tổng số đơn | Chỉ hiển thị đơn tại bàn, KHÔNG gồm đơn "Mang về". **BUG 0619: tab "Tại bàn" vẫn hiển thị cả đơn "Bàn mang về" (tổng = tab Tất cả)** |
 
 1.2 Tìm kiếm & bộ lọc
 
@@ -31,6 +33,9 @@
 | 1.2.14 | ☐ | Khoảng ngày: Tùy chọn | 1. Vào trang lịch sử 2. Bấm bộ lọc thời gian, chọn "Tùy chọn" 3. Nhập ngày bắt đầu và ngày kết thúc cụ thể 4. Xác nhận và quan sát danh sách | Chỉ hiện đơn trong khoảng ngày đã nhập |
 | 1.2.15 | ☐ | Kết hợp nhiều bộ lọc | 1. Vào trang lịch sử 2. Bật đồng thời: tab "Tại bàn" + Trạng thái "Đã thanh toán" + Thời gian "Hôm nay" 3. Quan sát danh sách kết quả | Chỉ hiện đơn thỏa tất cả điều kiện đã chọn |
 | 1.2.16 | ☐ | Ngày bắt đầu > ngày kết thúc | 1. Vào trang lịch sử, bật lọc thời gian tùy chọn 2. Nhập ngày bắt đầu lớn hơn ngày kết thúc (VD: từ 10/06 đến 01/06) 3. Xác nhận và quan sát phản hồi | Hệ thống chặn hoặc hiển thị thông báo lỗi, không trả kết quả sai |
+| 1.2.17 | ☐ | (Mới) Lọc khoảng ngày nhiều ngày phải trả đúng đơn trong khoảng | 1. Đảm bảo có đơn ở ≥2 ngày liên tiếp (VD hôm nay + hôm qua) 2. Chọn "Tuần này" (và "Tháng này") 3. Quan sát danh sách | Danh sách hiển thị TẤT CẢ đơn trong khoảng (≥ tổng đơn của các ngày trong khoảng). **BUG 0616: khoảng nhiều ngày trả về RỖNG dù chứa ngày có đơn — chỉ mốc 1 ngày chạy đúng** |
+| 1.2.18 | ☐ | (Mới) Lọc theo trạng thái thực tế của hệ thống | 1. Mở dropdown "Trạng thái" 2. Lần lượt chọn: Đang xử lý / Hoàn thành / Đã hủy / Đã trả hàng / Chờ thanh toán 3. Quan sát danh sách mỗi lần | Mỗi trạng thái lọc đúng nhóm đơn tương ứng. (Lưu ý: tập trạng thái thực tế khác checklist gốc — không có "Công nợ"; "Hoàn thành"=đã thanh toán, "Chờ thanh toán"=chưa thanh toán) — **0619: tập trạng thái nay ĐÃ khớp checklist gốc: Đã thanh toán / Chưa thanh toán / Đã hủy / Đã xử lý trả hàng / Công nợ** |
+| 1.2.19 | ☐ | (Mới) Tìm kiếm theo tên khách hàng | 1. Mở chi tiết 1 đơn có tên khách (VD "tranvana") 2. Nhập đúng tên khách vào ô tìm kiếm 3. Enter, quan sát | Trả về đơn của khách đó. **BUG 0619: tìm theo TÊN khách (tranvana) → rỗng; trong khi tìm theo mã đơn & SĐT vẫn đúng** |
 
 1.3 Danh sách đơn
 

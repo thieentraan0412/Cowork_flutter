@@ -87,7 +87,8 @@
 
 1.6 Xác nhận đơn (tại bàn / QR / mang về)
 
-try cập link đặt món QR_BAN để đặt món 
+try cập link đặt món QR_BAN để đặt món trong link.md
+
 
 | STT | ✓ | Testcase | Các bước thực hiện | Kết quả mong đợi |
 |-----|---|----------|--------------------|------------------|
@@ -115,7 +116,7 @@ try cập link đặt món QR_BAN để đặt món
 | 1.8.1 | ☐ | Mở chức năng chuyển bàn từ bàn đang dùng | 1. Từ Trang chủ, bấm vào một bàn đang có đơn (trạng thái "Đang sử dụng") 2. Tại màn hình Order, bấm icon "Chuyển bàn" trên thanh công cụ (hoặc menu `...` → chọn Chuyển bàn) 3. Quan sát màn hình mở ra | Hiện danh sách bàn đích để chọn |
 | 1.8.2 | ☐ | Bàn đích (bàn trống) hiển thị màu vàng | 1. Mở chức năng chuyển bàn từ bàn đang dùng 2. Quan sát màu sắc các thẻ bàn trong danh sách bàn đích 3. So sánh màu thẻ bàn trống và bàn đang dùng | Các bàn trống hiển thị màu vàng để gợi ý; bàn đang dùng hiển thị màu khác (xám hoặc tối) |
 | 1.8.3 | ☐ | Chọn bàn trống để chuyển | 1. Mở chức năng chuyển bàn từ "Bàn A" đang có đơn 2. Trong danh sách bàn đích, bấm chọn "Bàn B" đang trống (màu vàng) 3. Xác nhận chuyển bàn 4. Quan sát trạng thái Bàn A và Bàn B ngoài Trang chủ | Toàn bộ đơn của Bàn A chuyển sang Bàn B; Bàn A trở về trạng thái "trống"; Bàn B chuyển sang "Đang sử dụng" với đúng dữ liệu đơn cũ |
-| 1.8.4 | ☐ | Chỉ cho chọn bàn trống | 1. Mở chức năng chuyển bàn từ Bàn A 2. Quan sát phản hồi | Hệ thống thông báo đang không có đơn |
+| 1.8.4 | ☐ | Chỉ cho chọn bàn trống | 1.click trang chủ, click vào bàn trống -> Mở chức năng chuyển bàn từ Bàn A 2. Quan sát phản hồi | Hệ thống thông báo đang không có đơn |
 | 1.8.5 | ☐ | Chưa mở ca / không có quyền | 1. Đảm bảo ca chưa mở hoặc dùng tài khoản không có quyền chuyển bàn 2. Vào màn hình Order của bàn đang có đơn 3. Tìm và bấm nút Chuyển bàn | Hệ thống chặn thao tác, hiển thị thông báo "Chưa mở ca" hoặc "Không có quyền" |
 | 1.8.6 | ☐ | Dữ liệu đơn giữ nguyên sau chuyển bàn | 1. Ghi nhận danh sách món, số lượng, ghi chú và tổng tiền tại Bàn A trước khi chuyển 2. Chuyển sang Bàn B trống 3. Vào màn hình Order của Bàn B, kiểm tra lại toàn bộ thông tin | Danh sách món, số lượng, ghi chú, tổng tiền tại Bàn B khớp hoàn toàn với Bàn A trước khi chuyển |
 | 1.8.7 | ☐ | Trạng thái thẻ bàn cập nhật ngay sau chuyển | 1. Thực hiện chuyển Bàn A sang Bàn B 2. Xác nhận xong, ngay lập tức quay về "Trang chủ" (không reload thủ công) 3. Quan sát thẻ Bàn A và Bàn B | Bàn A hiển thị "trống" ngay lập tức; Bàn B hiển thị "Đang sử dụng" với đúng tổng tiền — không cần F5 mới thấy |
