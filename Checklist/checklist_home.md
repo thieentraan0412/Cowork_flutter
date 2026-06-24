@@ -9,8 +9,8 @@
 | 1.1.2 | ☐ | Lọc tab "Bàn trống" | 1. Tại Trang chủ, nhìn vào thanh filter phía trên sơ đồ bàn 2. Bấm chọn checkbox "Bàn trống" 3. Quan sát danh sách bàn và số đếm trong ngoặc | Chỉ hiện bàn trống, số đếm khớp |
 | 1.1.3 | ☐ | Lọc tab "Đang sử dụng" | 1. Tại Trang chủ, bỏ các filter đang chọn 2. Bấm chọn checkbox "Đang sử dụng" 3. Quan sát danh sách bàn và số đếm | Chỉ hiện bàn đang dùng, số đếm khớp |
 | 1.1.4 | ☐ | Lọc tab "Chờ xác nhận" | 1. Tại Trang chủ, bỏ các filter đang chọn 2. Bấm chọn checkbox "Chờ xác nhận" 3. Quan sát danh sách bàn | Chỉ hiện đơn chờ xác nhận |
-| 1.1.5 | ☐ | Lọc tab "Chờ thanh toán" | 1. Tại Trang chủ, bỏ các filter đang chọn 2. Bấm chọn checkbox "Chờ thanh toán" 3. Quan sát danh sách bàn | Chỉ hiện đơn chờ thanh toán |
-| 1.1.5 | ☐ | Lọc theo khu (khu 1 / khu 2) | 1. Tại Trang chủ, tìm dropdown "Tất cả (39)" ở góc phải thanh công cụ 2. Bấm vào dropdown, chọn một khu cụ thể (VD: Khu 1) 3. Quan sát danh sách bàn hiển thị | Chỉ hiện bàn thuộc khu đã chọn |
+| 1.1.5a | ☐ | Lọc tab "Chờ thanh toán" | 1. Tại Trang chủ, bỏ các filter đang chọn 2. Bấm chọn checkbox "Chờ thanh toán" 3. Quan sát danh sách bàn | Chỉ hiện đơn chờ thanh toán |
+| 1.1.5b | ☐ | Lọc theo khu (khu 1 / khu 2) | 1. Tại Trang chủ, tìm dropdown "Tất cả (39)" ở góc phải thanh công cụ 2. Bấm vào dropdown, chọn một khu cụ thể (VD: Khu 1) 3. Quan sát danh sách bàn hiển thị | Chỉ hiện bàn thuộc khu đã chọn |
 | 1.1.6 | ☐ | Đổi số cột hiển thị (6 cột) | 1. Tại Trang chủ, tìm dropdown "6 cột" trên thanh công cụ 2. Bấm vào dropdown, chọn số cột khác (VD: 4 cột hoặc 8 cột) 3. Quan sát lưới bàn thay đổi bố cục | Lưới bàn bố trí lại đúng số cột đã chọn |
 | 1.1.7 | ☐ | Đổi giao diện (1 / 2 / 3) | 1. Tại Trang chủ, tìm nút "Giao diện 3" trên thanh công cụ 2. Bấm nút để chuyển lần lượt: Giao diện 1 → 2 → 3 3. Quan sát kiểu hiển thị thẻ bàn sau mỗi lần đổi | Kiểu hiển thị thẻ bàn thay đổi tương ứng |
 | 1.1.8 | ☐ | Thẻ bàn hiển thị thông tin | 1. Tại Trang chủ, lọc tab "Đang sử dụng" 2. Quan sát một thẻ bàn đang hoạt động (thẻ màu vàng/cam) 3. Kiểm tra từng thông tin: tên bàn, timer, icon hóa đơn, icon số khách, tổng tiền, nhãn trạng thái | Đúng tên, timer, số hóa đơn, số khách, tổng tiền, trạng thái |
@@ -19,7 +19,11 @@
 | 1.1.11 | ☐ | Nút "Xác nhận" trên thẻ | 1. Tại Trang chủ, lọc tab "Chờ xác nhận" 2. Tìm thẻ bàn có nút "Xác nhận" 3. Bấm nút "Xác nhận" trực tiếp trên thẻ bàn 4. Quan sát trạng thái thẻ bàn sau thao tác | Đơn được xác nhận, trạng thái cập nhật sang "Đang sử dụng" |
 | 1.1.12 | ☐ | Bấm vào bàn | 1. Tại Trang chủ, chọn bất kỳ thẻ bàn nào 2. Bấm vào vùng thân thẻ bàn 3. Quan sát màn hình mở ra | Mở màn hình Order của bàn đó |
 | 1.1.13 | ☐ | Thêm đơn mang về | 1. Tại Trang chủ, tìm thẻ "Bàn mang về" (thẻ có icon Takeaway, vị trí đầu danh sách) 2. Bấm vào thẻ đó 3. Quan sát màn hình mở ra | Mở màn hình Order ở chế độ Mang đi |
-| 1.1.14 | ☐ | Số liệu các tab nhất quán | 1. Tại Trang chủ, ghi lại số đếm từng tab: "Bàn trống (n1)", "Đang sử dụng (n2)", "Chờ xác nhận (n3)", "Chờ thanh toán (n4)" 2. Tính tổng: n1 + n2 + n3 + n4 3. So sánh với số hiển thị tại tab "Tất cả" (Note: "Bàn mang về" được tính vào "Tất cả" nhưng không thuộc nhóm trạng thái nào) | Tổng các tab = tổng tất cả | 
+| 1.1.14 | ☐ | Số liệu các tab nhất quán | 1. Tại Trang chủ, ghi lại số đếm từng tab: "Bàn trống (n1)", "Đang sử dụng (n2)", "Chờ xác nhận (n3)", "Chờ thanh toán (n4)" 2. Tính tổng: n1 + n2 + n3 + n4 3. So sánh với số hiển thị tại tab "Tất cả" (Note: "Bàn mang về" được tính vào "Tất cả" nhưng không thuộc nhóm trạng thái nào) | Tổng các tab = tổng tất cả |
+| 1.1.15 | ☐ | Đổi chế độ xem "Danh sách" / "Sơ đồ" | 1. Tại Trang chủ, tìm dropdown chế độ xem (mặc định "Danh sách") trên thanh công cụ 2. Bấm dropdown, chọn chế độ xem khác 3. Quan sát cách bố trí bàn | Bàn hiển thị đúng theo chế độ đã chọn (lưới danh sách hoặc sơ đồ mặt bằng) |
+| 1.1.16 | ☐ | Bộ lọc trạng thái cộng dồn (đa lựa chọn) | 1. Tại Trang chủ, bật đồng thời nhiều filter trạng thái (VD: "Bàn trống" + "Đang sử dụng") 2. Quan sát danh sách bàn 3. Tắt bớt 1 filter | Hiển thị hợp (union) các trạng thái đang bật — filter là toggle cộng dồn, KHÔNG phải radio; tắt bớt filter thì danh sách thu lại tương ứng |
+| 1.1.17 | ☐ | Số đếm tab trạng thái là toàn cục | 1. Ghi nhận số đếm các tab trạng thái khi khu = "Tất cả" 2. Đổi dropdown khu sang "khu 1" / "khu 2" 3. Quan sát lại số đếm trên các tab trạng thái | Số đếm tab trạng thái KHÔNG đổi theo khu (toàn cục), chỉ lưới bàn lọc theo khu — cần xác nhận đây là hành vi mong muốn, tránh hiểu nhầm số bàn của khu |
+| 1.1.18 | ☐ | Thẻ "Bàn mang về" tính vào "Tất cả" | 1. Quan sát thẻ "BÀN MANG VỀ" ở đầu danh sách 2. Đối chiếu với số đếm "Tất cả" và các tab trạng thái | "Bàn mang về" được tính vào "Tất cả" nhưng không thuộc nhóm trạng thái (trống/đang dùng/chờ xác nhận/chờ thanh toán) → "Tất cả" có thể lớn hơn tổng các tab đúng 1 đơn vị | 
 
 1.2 Menu (Thực đơn)  click vào bàn bất kì 
 
@@ -30,8 +34,9 @@
 | 1.2.3 | ☐ | Tìm món (F1) | 1. Tại màn hình Order, bấm vào ô "Tìm và chọn món (F1)" 2. Gõ từ khóa tên món (thử cả có dấu và không dấu) 3. Quan sát kết quả lọc | Lọc đúng theo từ khóa, kể cả tiếng Việt có dấu |
 | 1.2.4 | ☐ | Ẩn/hiện hình ảnh món | 1. Tại màn hình Order, tìm toggle "Ẩn hình ảnh" phía trên lưới món 2. Bật toggle → quan sát 3. Tắt toggle → quan sát lại | Lưới ẩn/hiện ảnh tương ứng |
 | 1.2.5 | ☐ | Đổi số cột hiển thị món | 1. Tại màn hình Order, tìm dropdown "6 cột" phía trên lưới món 2. Bấm vào dropdown, chọn số cột khác 3. Quan sát bố cục lưới món | Bố trí lại đúng số cột đã chọn |
-| 1.2.6 | ☐ | Phân trang (1/5, 2/5...) | 1. Tại màn hình Order, quan sát chỉ số trang hiện tại (VD: 1/5) 2. Bấm mũi tên sang phải để chuyển sang trang tiếp 3. Quan sát món hiển thị và chỉ số trang cập nhật | Hiện trang tiếp theo, số trang đúng |
 | 1.2.7 | ☐ | Giá món | 1. Tại màn hình Order, quan sát giá hiển thị bên dưới từng món trong lưới 2. So sánh với giá thực tế đã cấu hình | Hiển thị đúng định dạng VND |
+| 1.2.8 | ☐ | Phạm vi tìm món theo danh mục đang chọn | 1. Tại màn hình Order, bấm 1 danh mục cụ thể (VD: "Lẩu") 2. Gõ từ khóa của món thuộc danh mục khác (VD: "tra") vào ô tìm món 3. Quan sát kết quả 4. Bấm về tab "Tất cả", gõ lại từ khóa đó | Khi đang ở 1 danh mục, tìm món chỉ tìm TRONG danh mục đó (có thể hiện "Không có món"); cần xác nhận kỳ vọng có nên tìm toàn thực đơn hay không |
+| 1.2.9 | ☐ | Tìm món không phân biệt dấu | 1. Tại tab "Tất cả", gõ từ khóa không dấu (VD: "tra") 2. Quan sát kết quả | Lọc đúng cả món có dấu lẫn không dấu (VD: ra "Trà A hỷ", "tran chau"...) |
 
 1.3 Modal tùy chọn món
 
@@ -70,6 +75,10 @@
 | 1.4.18 | ☐ | Đơn các bàn độc lập | 1. Thêm món vào Bàn A, quay về Trang chủ 2. Vào Bàn B, thêm món khác 3. Quay lại Bàn A kiểm tra | Hóa đơn Bàn A không bị lẫn món của Bàn B |
 | 1.4.19 | ☐ | Hóa đơn trống | 1. Tại màn hình Order, tạo hóa đơn mới (bấm +) hoặc vào bàn chưa có món 2. Quan sát panel hóa đơn | Hiển thị thông báo "Bạn chưa thêm sản phẩm nào", tổng tiền = 0 |
 | 1.4.20 | ☐ | Nhân viên phụ trách | 1. Tại màn hình Order, quan sát tên nhân viên hiển thị trong hóa đơn (VD: "Nhân viên: Admin Master") 2. So sánh với tài khoản đang đăng nhập | Hiển thị đúng tên nhân viên đang thao tác |
+| 1.4.21 | ☐ | Chọn khách hàng qua "Chọn thành viên" | 1. Trong hóa đơn, bấm dropdown "Chọn thành viên" (góc trên phải panel) 2. Tìm và chọn một thành viên/khách hàng 3. Quan sát thông tin khách gắn vào hóa đơn | Khách hàng được gắn vào hóa đơn (lưu ý nhãn thực tế là "Chọn thành viên", không phải "Khách lẻ") |
+| 1.4.22 | ☐ | Modal sửa giá — ô "Giá mới" là kết quả | 1. Bấm icon bút tại cột Đơn giá → modal "Thay đổi giá bán" 2. Gõ trực tiếp số vào ô "Giá mới" → Xác nhận → quan sát đơn giá 3. Thử nhập qua ô "Giảm giá" (VNĐ/%) → quan sát "Giá mới" tự tính → Xác nhận | Gõ thẳng vào "Giá mới" KHÔNG đổi đơn giá; phải nhập qua "Giảm giá" thì "Giá mới" mới tự tính và áp đúng (ô "Giá mới" là output, không phải input) |
+| 1.4.23 | ☐ | Phụ thu trực tiếp khi để "Không áp dụng" | 1. Dòng "Phụ thu" → icon bút → modal "Chọn phụ thu" 2. Để "Phụ thu trực tiếp" = "Không áp dụng", chuyển VNĐ, gõ giá trị (VD 10.000) 3. Bấm "Áp dụng" 4. Quan sát dòng Phụ thu trên hóa đơn | Khi để "Không áp dụng", phụ thu nhập tay KHÔNG được áp (vẫn 0đ) dù preview hiện "Tổng phụ thu"; phải chọn 1 chương trình phụ thu mới áp được → preview gây hiểu nhầm |
+| 1.4.24 | ☐ | Tổng tiền cập nhật bất đồng bộ | 1. Thêm/xóa món hoặc bấm +/- số lượng liên tục 2. Quan sát cột "Thành tiền" của dòng và "Tổng tiền hàng" / "Tổng tiền thanh toán" | "Thành tiền" dòng đổi ngay nhưng tổng tiền có thể trễ ~1–7s mới khớp (async); cần xác nhận không gây sai số khi thanh toán |
 
 1.5 In bếp / Thanh toán
 
@@ -147,8 +156,8 @@ try cập link đặt món QR_BAN để đặt món trong link.md
 | 1.10.2 | ☐ | Mở từ bàn trống (không có đơn) | 1. Từ Trang chủ, bấm vào một bàn trống 2. Tại màn hình Order, tìm và bấm icon Tách/Ghép bàn 3. Quan sát phản hồi | Hệ thống không cho mở (chặn hoặc ẩn nút), vì không có món/đơn nào để tách/ghép |
 | 1.10.3 | ☐ | Giao diện hiển thị đúng thông tin bàn nguồn | 1. Mở chức năng tách/ghép từ "Bàn A" đang có 3 món 2. Quan sát panel trái | Panel trái hiển thị đúng tên bàn, danh sách món và số lượng đúng với đơn thực tế của Bàn A |
 | 1.10.4 | ☐ | Chọn bàn đích để ghép | 1. Mở giao diện tách/ghép từ Bàn A 2. Tại panel phải, bấm dropdown hoặc danh sách để chọn "Bàn B" (đang trống hoặc đang có đơn) 3. Quan sát panel phải cập nhật | Panel phải hiển thị thông tin của Bàn B (danh sách món nếu đang có đơn, hoặc trống nếu bàn chưa dùng) |
-| 1.10.5 | ☐ | Ghép toàn bộ đơn vào bàn đích đang trống | 1. Mở giao diện tách/ghép từ "Bàn A" (có 3 món) 2. Chọn "Bàn B" đang trống làm đích 3. Tích chọn tất cả món ở panel trái 4. Bấm nút "Ghép" / "Chuyển sang" 5. Xác nhận thao tác 6. Quan sát trạng thái Bàn A và Bàn B ngoài Trang chủ | Tất cả món của Bàn A chuyển sang Bàn B; Bàn A trở về trạng thái "trống"; Bàn B chuyển sang "Đang sử dụng" với đúng 3 món |
-| 1.10.5 | ☐ | Ghép toàn bộ đơn vào bàn đích đang có đơn | 1. Mở giao diện tách/ghép từ "Bàn A" (có món X, Y) 2. Chọn "Bàn B" đang có món Z làm đích 3. Tích chọn tất cả món ở panel trái 4. Bấm "Ghép" và xác nhận 5. Quan sát hóa đơn Bàn B | Bàn B có đủ 3 món (X, Y, Z); Bàn A về trống; tổng tiền Bàn B = tổng X + Y + Z |
+| 1.10.5a | ☐ | Ghép toàn bộ đơn vào bàn đích đang trống | 1. Mở giao diện tách/ghép từ "Bàn A" (có 3 món) 2. Chọn "Bàn B" đang trống làm đích 3. Tích chọn tất cả món ở panel trái 4. Bấm nút "Ghép" / "Chuyển sang" 5. Xác nhận thao tác 6. Quan sát trạng thái Bàn A và Bàn B ngoài Trang chủ | Tất cả món của Bàn A chuyển sang Bàn B; Bàn A trở về trạng thái "trống"; Bàn B chuyển sang "Đang sử dụng" với đúng 3 món |
+| 1.10.5b | ☐ | Ghép toàn bộ đơn vào bàn đích đang có đơn | 1. Mở giao diện tách/ghép từ "Bàn A" (có món X, Y) 2. Chọn "Bàn B" đang có món Z làm đích 3. Tích chọn tất cả món ở panel trái 4. Bấm "Ghép" và xác nhận 5. Quan sát hóa đơn Bàn B | Bàn B có đủ 3 món (X, Y, Z); Bàn A về trống; tổng tiền Bàn B = tổng X + Y + Z |
 | 1.10.6 | ☐ | Ghép một phần món sang bàn đích | 1. Mở giao diện tách/ghép từ "Bàn A" (có món X, Y, Z) 2. Chỉ tích chọn món "X" và "Y" ở panel trái (bỏ qua Z) 3. Chọn "Bàn B" làm đích 4. Bấm "Ghép" và xác nhận 5. Quan sát cả hai bàn | Bàn B nhận được món X và Y; Bàn A "vẫn còn" món Z và tiếp tục trạng thái "Đang sử dụng" |
 | 1.10.7 | ☐ | Tổng tiền sau ghép tính đúng | 1. Ghi nhận tổng tiền Bàn A (= a) và Bàn B (= b) trước khi ghép 2. Ghép toàn bộ đơn Bàn A sang Bàn B 3. Quan sát tổng tiền Bàn B sau ghép | Tổng tiền Bàn B sau ghép = a + b (cộng đúng, không mất tiền) |
 | 1.10.8 | ☐ | Ghép nhiều hóa đơn trong 1 bàn vào nhau | 1. Tại Bàn A đang có 2 tab hóa đơn (HĐ1 và HĐ2) 2. Mở giao diện tách/ghép 3. Chọn ghép HĐ2 vào HĐ1 4. Xác nhận | HĐ1 chứa tất cả món của HĐ1 + HĐ2; HĐ2 bị xóa; tổng tiền HĐ1 = tổng cả hai |
@@ -161,7 +170,7 @@ try cập link đặt món QR_BAN để đặt món trong link.md
 | 1.10.16 | ☐ | Không cho tách khi chỉ có 1 món, số lượng = 1 | 1. Tạo đơn tại Bàn A chỉ có "1 món", số lượng = 1 2. Mở giao diện tách/ghép 3. Thử tách món đó ra | Hệ thống chặn hoặc cảnh báo: không thể tách vì không còn món nào ở đơn gốc |
 | 1.10.17 | ☐ | Tách toàn bộ món (bàn nguồn sẽ trống) | 1. Mở giao diện tách/ghép từ Bàn A có 2 món 2. Tích chọn "tất cả" món 3. Chọn đích là Bàn B trống 4. Xác nhận | Bàn A về trạng thái "trống"; Bàn B có toàn bộ 2 món; Bàn A không giữ trạng thái "Đang sử dụng" khi không còn món |
 | 1.10.18 | ☐ | Bấm "Xác nhận" hoàn tất ghép/tách | 1. Thực hiện thao tác ghép hoặc tách hợp lệ (đã chọn món, chọn bàn đích) 2. Bấm nút "Xác nhận" / "Hoàn tất" 3. Quan sát kết quả | Thao tác thực hiện thành công; dữ liệu các bàn cập nhật đúng; màn hình đóng giao diện tách/ghép, trở về màn hình Order |
-| 1.10.19 | ☐ | Bấm "Hủy" / "Đóng" giữa chừng | 1. Mở giao diện tách/ghép, thực hiện chọn món và chọn bàn đích 2. "Không" bấm Xác nhận, thay vào đó bấm "Hủy" hoặc "Đóng" (X) 3. Quan sát dữ liệu hai bàn | Không có thay đổi nào xảy ra; đơn tại Bàn A và Bàn B giữ nguyên như trước |
+| 1.10.19 | ☐ | Bấm "Hủy" / "Đóng (X)" giữa chừng — không lưu thay đổi | 1. Mở giao diện tách/ghép từ Bàn A đang có đơn 2. Tích chọn một số món, chọn Bàn B làm đích (đã thao tác một phần nhưng chưa xác nhận) 3a. Bấm nút "Hủy" — quan sát kết quả 3b. Lặp lại từ đầu, lần này bấm dấu "X" để đóng cửa sổ — quan sát kết quả 4. Kiểm tra lại đơn Bàn A và Bàn B | Giao diện tách/ghép đóng lại; Bàn A giữ nguyên toàn bộ món ban đầu; Bàn B không nhận thêm món nào; không có dữ liệu nào bị thay đổi ở cả hai trường hợp (Hủy và Đóng X) |
 | 1.10.20 | ☐ | Xác nhận khi chưa chọn món nào | 1. Mở giao diện tách/ghép 2. Không tích chọn bất kỳ món nào 3. Bấm "Xác nhận" 4. Quan sát phản hồi | Hệ thống chặn, hiển thị thông báo yêu cầu chọn ít nhất 1 món |
 | 1.10.21 | ☐ | Xác nhận khi chưa chọn bàn/hóa đơn đích | 1. Mở giao diện tách/ghép 2. Tích chọn 1 hoặc nhiều món 3. Không chọn bàn đích 4. Bấm "Xác nhận" | Hệ thống chặn, hiển thị thông báo yêu cầu chọn bàn hoặc hóa đơn đích |
 | 1.10.22 | ☐ | Món đã gửi bếp vẫn tách/ghép được | 1. Tại Bàn A, thêm món X và bấm "Báo bếp" 2. Mở giao diện tách/ghép 3. Tích chọn món X (đã gửi bếp) và thực hiện ghép/tách sang Bàn B 4. Quan sát kết quả | Món đã gửi bếp vẫn được tách/ghép thành công; trạng thái "đã gửi bếp" giữ nguyên theo món sau khi chuyển sang bàn đích |
@@ -192,7 +201,7 @@ Lưu ý: Đơn phải có sản phẩm, đơn đủ điều kiện thì mới hi
 | STT | ✓ | Testcase | Các bước thực hiện | Kết quả mong đợi |
 |-----|---|----------|--------------------|------------------|
 | 1.12.1 | ☐ | Mở chức năng khuyến mãi trên đơn | 1. Trong màn hình Order có món, tìm nút "..." hoặc mục "Khuyến mãi" 2. Bấm mở chức năng khuyến mãi 3. Quan sát danh sách | Hiện danh sách chương trình khuyến mãi còn hiệu lực |
-| 1.12.2 | ☐ | Áp khuyến mãi vào đơn | 1. Mở danh sách khuyến mãi, chọn một CTKM phù hợp 2. Xác nhận áp 3. Quan sát dòng "Giảm giá" và Tổng tiền thanh toán | Giảm giá áp đúng theo CTKM, tổng tiền thanh toán giảm tương ứng |
+| 1.12.2 | ☐ | Áp khuyến mãi vào đơn | 1. Mở danh sách khuyến mãi, chọn một CTKM phù hợp 2. Xác nhận áp 3. Quan sát dòng "Giảm giá" và Tổng tiền thanh toán | Giảm giá áp đúng theo CTKM, tổng tiền thanh toán giảm tương ứng |1.1.11 
 | 1.12.3 | ☐ | CTKM hết hiệu lực | 1. Mở danh sách khuyến mãi 2. Tìm CTKM đã hết ngày hoặc hết lượt 3. Quan sát xem có hiển thị không | CTKM hết hiệu lực không xuất hiện trong danh sách hoặc không áp được |
 | 1.12.4 | ☐ | Đơn không thỏa điều kiện CTKM | 1. Tạo đơn có giá trị thấp hơn điều kiện tối thiểu của CTKM 2. Thử áp CTKM đó 3. Quan sát phản hồi | Hệ thống không cho áp, hiển thị thông báo lỗi |
 | 1.12.5 | ☐ | Bỏ khuyến mãi đã áp | 1. Sau khi đã áp CTKM thành công, tìm tùy chọn gỡ/bỏ khuyến mãi 2, muốn gỡ khuyến mãi, click vào menu chức năng, xong click vào khuyến mãi, tắt đi khuyến mãi đó lại  3. Quan sát lại Tổng tiền thanh toán | Giảm giá bị xóa, tổng tiền hoàn về giá gốc |
@@ -227,3 +236,53 @@ Lưu ý: Đơn phải có sản phẩm, đơn đủ điều kiện thì mới hi
 | 1.15.4 | ☐ | Mất mạng khi thanh toán | 1. Chuẩn bị đơn hàng sẵn sàng thanh toán 2. Tắt mạng (ngắt WiFi hoặc kéo cáp) 3. Bấm "Thanh toán" 4. Bật lại mạng, kiểm tra trong Lịch sử đơn | Đơn không bị tạo trùng, dữ liệu nhất quán |
 | 1.15.5 | ☐ | Hai thu ngân cùng 1 bàn | 1. Mở bàn đang có đơn trên 2 thiết bị/tab khác nhau 2. Cả 2 cùng thêm món hoặc chỉnh sửa đồng thời 3. Quan sát kết quả trên cả 2 thiết bị | Không bị ghi đè hoặc mất dữ liệu của nhau |
 | 1.15.6 | ☐ | Ghi chú có dấu / ký tự đặc biệt | 1. Trong hóa đơn, tích checkbox "Ghi chú" trên một dòng món 2. Nhập nội dung có dấu tiếng Việt và ký tự đặc biệt (VD: @, #, !, ...) 3. Lưu và quan sát lại dòng món | Ghi chú lưu và hiển thị đúng, không bị lỗi ký tự |
+
+1.16 In tem / In lại tem / In lại phiếu bếp (trong menu "..." của hóa đơn)
+
+| STT | ✓ | Testcase | Các bước thực hiện | Kết quả mong đợi |
+|-----|---|----------|--------------------|------------------|
+| 1.16.1 | ☐ | In tem món | 1. Màn hình Order có ít nhất 1 món 2. Bấm "..." → "In tem" 3. Quan sát phản hồi | Gửi lệnh in tem cho các món; nếu đã cấu hình máy in thì in đúng số tem theo món |
+| 1.16.2 | ☐ | In lại tem | 1. Bấm "..." → "In lại tem" 2. Quan sát | In lại tem của các món đã in trước đó, nội dung tem đúng |
+| 1.16.3 | ☐ | In lại phiếu bếp | 1. Bấm "..." → "In lại phiếu bếp" 2. Quan sát | In lại phiếu bếp/bar của đơn, đúng danh sách món đã báo bếp |
+| 1.16.4 | ☐ | In tem khi giỏ hàng trống | 1. Hóa đơn chưa có món 2. Bấm "..." → "In tem" 3. Quan sát | Hệ thống chặn hoặc không in (không có món để in tem) |
+| 1.16.5 | ☐ | Cảnh báo chưa cấu hình máy in | 1. Môi trường chưa gắn/cấu hình máy in 2. Thực hiện In tem / In lại tem / In lại phiếu bếp | Hiển thị toast "Cảnh báo — Chưa thiết lập cấu hình máy in. Vui lòng vào Cài đặt để thiết lập máy in." (lỗi môi trường, không phải lỗi nghiệp vụ) |
+
+1.17 Hóa đơn điện tử (trong menu "..." của hóa đơn)
+
+| STT | ✓ | Testcase | Các bước thực hiện | Kết quả mong đợi |
+|-----|---|----------|--------------------|------------------|
+| 1.17.1 | ☐ | Mở form Hóa đơn điện tử | 1. Màn hình Order có món 2. Bấm "..." → "Hóa đơn điện tử" 3. Quan sát modal | Hiện form "Hóa đơn điện tử": nhóm "Thông tin hóa đơn" (Ngày phát hành) và "Thông tin bên mua" (radio Cá nhân / Doanh nghiệp) |
+| 1.17.2 | ☐ | Bên mua loại "Cá nhân" | 1. Trong form, chọn radio "Cá nhân" 2. Quan sát các trường | Hiện: Họ tên (*), CCCD/CMND, Số điện thoại, Hộ chiếu, Địa chỉ (*), Email, Mã đơn vị QHNS |
+| 1.17.3 | ☐ | Bên mua loại "Doanh nghiệp" | 1. Chọn radio "Doanh nghiệp" 2. Quan sát các trường thay đổi | Hiện các trường dành cho doanh nghiệp (Mã số thuế, tên đơn vị...) thay cho trường cá nhân |
+| 1.17.4 | ☐ | Bắt buộc Họ tên & Địa chỉ | 1. Để trống "Họ tên" và/hoặc "Địa chỉ" (*) 2. Bấm "Áp dụng" 3. Quan sát | Hệ thống chặn, báo các trường bắt buộc (*) chưa nhập |
+| 1.17.5 | ☐ | Ngày phát hành mặc định | 1. Mở form 2. Quan sát "Ngày phát hành" | Mặc định là ngày hiện tại, đúng định dạng dd/MM/yyyy |
+| 1.17.6 | ☐ | Áp dụng phát hành HĐĐT | 1. Nhập đủ thông tin hợp lệ 2. Bấm "Áp dụng" 3. Quan sát | Thông tin HĐĐT được lưu/gắn vào đơn, sẵn sàng phát hành khi thanh toán |
+| 1.17.7 | ☐ | Email/SĐT sai định dạng | 1. Nhập email hoặc số điện thoại sai định dạng 2. Bấm "Áp dụng" | Hệ thống cảnh báo định dạng không hợp lệ, không cho áp dụng |
+
+1.18 Đồng giá (trong menu "..." của hóa đơn)
+
+| STT | ✓ | Testcase | Các bước thực hiện | Kết quả mong đợi |
+|-----|---|----------|--------------------|------------------|
+| 1.18.1 | ☐ | Mở chức năng Đồng giá | 1. Màn hình Order có món 2. Bấm "..." → "Đồng giá" 3. Quan sát modal | Hiện modal "Đồng giá" kèm cảnh báo "Áp dụng đồng giá sẽ thay thế giá hiện tại của các món. Kiểm tra kỹ trước khi xác nhận." |
+| 1.18.2 | ☐ | Không có chương trình đồng giá | 1. Mở modal Đồng giá khi chưa cấu hình chương trình nào 2. Quan sát | Hiển thị "Không có chương trình đồng giá"; bấm "Áp dụng" không thay đổi giá |
+| 1.18.3 | ☐ | Áp dụng chương trình đồng giá | 1. Có chương trình đồng giá hợp lệ 2. Chọn chương trình, bấm "Áp dụng" 3. Quan sát giá các món và tổng tiền | Giá các món được thay bằng giá đồng giá; tổng tiền cập nhật đúng |
+| 1.18.4 | ☐ | Đóng không áp dụng | 1. Mở modal Đồng giá 2. Bấm "Đóng" 3. Quan sát | Đóng modal, giá các món giữ nguyên |
+
+1.19 Thanh toán đa phương thức (trong menu "..." của hóa đơn)
+
+| STT | ✓ | Testcase | Các bước thực hiện | Kết quả mong đợi |
+|-----|---|----------|--------------------|------------------|
+| 1.19.1 | ☐ | Bật chế độ thanh toán đa phương thức | 1. Màn hình Order có món 2. Bấm "..." → "Thanh toán đa phương thức" 3. Quan sát panel hóa đơn | Panel hiện các ô nhập số tiền theo từng phương thức (Tiền mặt, Chuyển khoản...) thay vì thanh toán 1 phương thức |
+| 1.19.2 | ☐ | Chia tiền 2 phương thức | 1. Nhập một phần vào "Tiền mặt" (VD 300.000) 2. Nhập phần còn lại vào "Chuyển khoản" (VD 250.000) 3. Quan sát tổng | Tổng các phương thức = Tổng tiền thanh toán (VD 550.000) |
+| 1.19.3 | ☐ | Tổng phương thức < tổng đơn | 1. Nhập tổng các phương thức nhỏ hơn tổng cần thanh toán 2. Bấm "Thanh toán" | Hệ thống chặn/cảnh báo còn thiếu tiền, không hoàn tất |
+| 1.19.4 | ☐ | Tổng phương thức > tổng đơn | 1. Nhập tổng các phương thức lớn hơn tổng cần thanh toán 2. Quan sát | Xử lý tiền thừa đúng quy tắc (hiển thị tiền thừa hoặc chặn theo cấu hình) |
+| 1.19.5 | ☐ | Đủ các phương thức (Tiền mặt/CK/Quẹt thẻ/QR) | 1. Chia tiền lần lượt qua nhiều phương thức 2. Quan sát | Hỗ trợ chia tiền nhiều phương thức cùng lúc, ghi nhận từng phần đúng |
+| 1.19.6 | ☐ | Hoàn tất thanh toán đa phương thức | 1. Chia tiền hợp lệ (tổng khớp) 2. Bấm "Thanh toán" → xác nhận 3. Quay về Trang chủ | Đơn hoàn tất, ghi nhận đúng số tiền theo từng phương thức; bàn về trạng thái trống |
+
+1.20 Hiệu năng & ổn định (Flutter web)
+
+| STT | ✓ | Testcase | Các bước thực hiện | Kết quả mong đợi |
+|-----|---|----------|--------------------|------------------|
+| 1.20.1 | ☐ | Tổng tiền cập nhật tức thì | 1. Bấm +/- số lượng hoặc xóa món liên tục 2. Quan sát thời điểm "Tổng tiền hàng" / "Tổng tiền thanh toán" khớp lại | Tổng tiền nên cập nhật ngay; ghi nhận FAIL nếu trễ vài giây gây hiểu nhầm số tiền |
+| 1.20.2 | ☐ | App không treo khi thao tác liên tục | 1. Thực hiện chuỗi thao tác nhanh (mở/đóng modal, +/-, mở menu "...", chuyển màn) 2. Quan sát phản hồi | App phản hồi ổn định; ghi nhận nếu renderer ngừng phản hồi (click không tác dụng, tổng tiền kẹt) buộc phải reload |
+| 1.20.3 | ☐ | Khôi phục dữ liệu sau reload | 1. Khi app đơ, reload trang về URL gốc 2. Chọn lại Chi nhánh + Thu ngân 3. Vào lại bàn đang thao tác | Dữ liệu đơn không mất sau reload; trạng thái bàn nhất quán, không tạo đơn trùng |

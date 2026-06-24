@@ -4,7 +4,7 @@
 Claude thực hiện kiểm thử menu **Home** theo `Checklist/checklist_home.md` và ghi kết quả.
 
 Sử dụng trình duyệt chorme
-
+Đây là tài khoản test nên được quyền sử dụng mọi thứ
 
 ## Chuẩn bị
 1. Mở https://order-flutter.nasys.vn/#/auth-route
@@ -14,7 +14,7 @@ Sử dụng trình duyệt chorme
 
 ## Các bước thực hiện
 Trong những testcase nào cần thêm link thì sử dụng trong `Link/link.md`
-Đây là tài khoản test nên được quyền sử dụng mọi thứ
+
 1. Lần lượt thực hiện từng mục trong `Checklist/checklist_home.md` theo đúng thứ tự số (1 → 1.1 → 1.1.1), không dừng lại cho đến khi chạy xong,hãy sử file link.md nếu cần thêm các setting
 2. Với mỗi mục, ghi nhận: **PASS / FAIL / BLOCKED / N/A** và mô tả ngắn quan sát thực tế.
 3. Trọng tâm: Thực hiện đúng theo các bước đã hướng dẫn trong testcase và ghi nhận lỗi.
