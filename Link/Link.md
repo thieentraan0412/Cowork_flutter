@@ -11,6 +11,7 @@ Link setting: https://table1.klkim.com/v2/system/parameter/admin
     Link này để vào kiểm tra bật tắt setting ( lưu ý: khi đổi setting thì thu ngân cần đăng xuất, đăng nhập lại)
 
 tài khoản đăng nhâp:
+
 ID store: thientester
 tài khoản: admin
 mật khẩu: 12345678

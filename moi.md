@@ -128,7 +128,7 @@
 
 ---
 
-## Ghi chú UI thực tế 
+## Ghi chú UI thực tế (cập nhật từ phiên kiểm thử 0619 & 0623)
 > Các mục **1.8 trở đi** dùng đúng thuật ngữ/giá trị thực tế trên giao diện hiện tại:
 > - Mã phiếu thực tế: **PC…** (phiếu thu) / **PT…** (phiếu chi) — KHÔNG phải "vote-00001".
 > - Thẻ tổng quan: **Tồn đầu kỳ · Tổng thu · Tổng chi · Số dư cuối ca**.
@@ -272,3 +272,16 @@
 | 1.18.4 | ☐ | Lỗi mạng khi Lưu | 1. Mở Thêm phiếu, điền hợp lệ 2. (Nếu mô phỏng được) ngắt mạng rồi bấm Tạo mới | Hiện thông báo lỗi mạng rõ ràng, không tạo phiếu trùng/rác |
 
 ---
+
+1.19 Regression — Lỗi & lệch đã biết (kiểm lại mỗi phiên)
+
+| STT | ✓ | Testcase | Các bước thực hiện | Kết quả mong đợi |
+|-----|---|----------|--------------------|------------------|
+| 1.19.1 | ☐ | BUG-01: Số tiền = 0 vẫn tạo phiếu | 1. Thêm phiếu, Loại=Chi, Số tiền=0 2. Bấm "Tạo mới" 3. Quan sát | ĐÃ FIX nếu: chặn + báo "số tiền phải > 0". CÒN LỖI nếu: tạo thành công PT00000000. (Tồn từ 0616→0623) |
+| 1.19.2 | ☐ | LỆCH-01: Giới hạn Mô tả 50 vs 200 | 1. Mở Thêm phiếu, xem counter ô Mô tả | Ghi nhận giới hạn hiện tại (50). Cần thống nhất spec: 50 hay 200 |
+| 1.19.3 | ☐ | LỆCH-02: Label Người nộp/Người nhận | 1. Mở Thêm phiếu, Loại=Thu → xem label 2. Đổi Loại=Chi → xem lại | ĐÃ FIX nếu: Thu→"Người nộp", Chi→"Người nhận". CÒN LỆCH nếu: luôn gộp "Người nộp/Người nhận" |
+| 1.19.4 | ☐ | LỆCH-03: "Loại nhân sự" vs "Loại đối tượng" | 1. Mở Thêm phiếu, xem trường liên động Người nộp 2. Đọc các giá trị | Ghi nhận: trường là "Loại nhân sự" theo vai trò. So spec "Loại đối tượng" (Khách hàng/Nhân viên) |
+| 1.19.5 | ☐ | FIND-BALANCE: Đầu kỳ đổi theo lọc loại | 1. Lọc chỉ "Phiếu chi" (Tháng này) 2. Xem Tồn đầu kỳ & Số dư cuối ca | ĐÃ FIX nếu: Đầu kỳ giữ cố định. CÒN VẤN ĐỀ nếu: ra số âm (VD −22.294.150) gây hiểu nhầm |
+| 1.19.6 | ☐ | Mã phiếu "toàn số 0" | 1. Tạo vài phiếu hợp lệ 2. Kiểm tra mã sinh ra | Không có mã PT00000000/PC00000000; mỗi mã là số thứ tự hợp lệ tăng dần |
+| 1.19.7 | ☐ | Cải thiện: Loại nguồn đúng giá trị | 1. Mở bộ lọc "Loại nguồn" 2. Đọc các giá trị | Có đúng Bán hàng/Mua hàng/Trả hàng/Tự tạo (đã sửa từ phiên 0619 vốn theo vai trò) |
+| 1.19.8 | ☐ | Cải thiện: cột Mã công nợ có dữ liệu | 1. Mở tab Công nợ 2. Xem cột "Mã công nợ" | Cột Mã công nợ có dữ liệu (#52, #51…), không còn để trống như phiên 0619 |

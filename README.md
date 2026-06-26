@@ -1,4 +1,4 @@
-# test_order — Bộ kiểm thử hệ thống Cashier (table1.klkim.com)
+# test_order — Bộ kiểm thử hệ thống Cashier (order-flutter.nasys.vn)
 
 Thư mục này tập hợp toàn bộ tài liệu, hướng dẫn và kết quả kiểm thử cho hệ thống cashier.
 
