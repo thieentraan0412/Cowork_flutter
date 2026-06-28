@@ -1,5 +1,26 @@
 # Checklist — Menu HISTORY
 
+## Ghi chú UI thực tế (cập nhật từ phiên kiểm thử 0626)
+> - **Tên menu:** **"Lịch sử"** — danh sách đơn hàng đã/đang xử lý.
+> - **Tab loại đơn:** chỉ **3 tab** — **Tất cả / Tại bàn / Mang về** (UI thực tế **KHÔNG có tab "Đặt online"**). Dropdown **"Chọn bàn"** bị ẩn ở tab "Mang về".
+> - **Tìm kiếm:** phải **nhấn Enter** mới lọc. Tìm theo **mã đơn / SĐT** hoạt động đúng; tìm theo **tên khách hiện đang lỗi** (ra rỗng).
+> - **Dropdown Trạng thái — đúng 6 mục:** Tất cả / Đã thanh toán / Chưa thanh toán / Đã hủy / Đã xử lý trả hàng / Công nợ.
+> - **Bộ lọc thời gian:** Hôm nay / Hôm qua / Tuần này / Tháng này / **Quý này** / **Năm nay** / Tùy chọn. Lịch **chặn ngày tương lai** (làm mờ), có nút **Hủy / Áp dụng**, tự sắp xếp lại nếu chọn ngày đầu > ngày cuối.
+> - **Mặc định khi mở trang:** Tất cả · Trạng thái Tất cả · Tất cả bàn · **Hôm nay**.
+> - **Nút "Xuất Excel"** → thông báo "Đã xuất file, đang tải xuống trình duyệt".
+> - **Thẻ đơn hiển thị:** tên bàn · **khách hàng** (Khách lẻ / tên thành viên) · ngày giờ · mã **POS…** · số tiền · trạng thái · HĐĐT. *Thẻ hiển thị KHÁCH HÀNG, không hiển thị tài khoản nhân viên (NV nằm trong chi tiết).* Có dòng **"Tổng: X đơn"**.
+> - **Màu thẻ theo trạng thái:** Chưa thanh toán = **xám** · Đã thanh toán = **xanh** · Công nợ = **cam** · Đã hủy = **đỏ**.
+> - **HĐĐT:** "Chờ ký" (đơn đã TT / công nợ) · "Không xác định" (đơn chưa TT / đã hủy).
+> - **Mở chi tiết:** bấm **thân thẻ KHÔNG mở** modal; chỉ mở qua **"…" → "Chi tiết"**. Modal **"Chi tiết hóa đơn"** gồm: Ngày tạo, Người tạo, Bàn, Khách, **Số khách**, **Ghi chú**, danh sách món, Tổng tiền hàng, Phụ thu / Giảm giá / **Tích điểm** / VAT, Tổng tiền thanh toán, PTTT, badge trạng thái.
+> - **Menu "…" thay đổi theo trạng thái đơn:**
+>   - **Chưa thanh toán:** chỉ **"Chi tiết"**.
+>   - **Đã thanh toán:** Chi tiết / In lại bill / In lại tem / In lại HĐĐT (hiện **chưa có "Trả hàng"** — chức năng Trả hàng đang pending).
+>   - **Công nợ:** Chi tiết / In lại bill / In lại tem / In lại HĐĐT / **Thanh toán nợ**.
+>   - **Đã hủy:** chỉ **"Chi tiết"**.
+> - **Công nợ:** thanh toán tiền mặt **< tổng đơn** → phát sinh công nợ; **bắt buộc gán thành viên** (cảnh báo "Vui lòng chọn thành viên để sử dụng tính năng công nợ"); hiện **"Số tiền nợ"**, **"Số ngày"** (mặc định 30), **"Ngày đáo hạn"**. Modal chi tiết công nợ đủ 3 dòng: **Tổng tiền thanh toán (X) / Khách đưa (Y) / Tiền khách còn nợ (X−Y)**.
+> - **Quy ước mã:** đơn **POS…**, phiếu thu **PC…**, gắn hậu tố chi nhánh (VD **CN2**).
+> - **Quirk môi trường (Flutter web):** đôi lúc **render trắng** màn Trang chủ/Lịch sử → phải **F5** hoặc đổi "số cột" mới hiện đúng.
+
 1. Lịch sử
 1.1 Bộ lọc loại đơn
 
@@ -150,9 +171,9 @@
 
 | STT | ✓ | Testcase | Các bước thực hiện | Kết quả mong đợi |
 |-----|---|----------|--------------------|------------------|
-| 1.6.19 | ☐ | Tiền khách nhập = 0 → hệ thống có cho phép tạo công nợ không | 1. Màn hình thanh toán, chọn Tiền mặt 2. Nhập tiền khách = 0 (hoặc bỏ trống) 3. Bấm xác nhận 4. Quan sát phản hồi | Ghi nhận hành vi: hệ thống chặn lỗi / cảnh báo / hoặc cho phép tạo nợ 100% — ghi nhận kết quả thực tế |
+| 1.6.19 | ☐ | Tiền khách nhập = 0 (nợ 100%) | 1. Trang chủ → chọn bàn → thêm món (tổng = X) → **gán thành viên** (VD tranvana — công nợ bắt buộc có thành viên, xem 1.6.23) 2. Bấm "Thanh toán" → chọn Tiền mặt 3. Nhập tiền khách = 0 (hoặc bỏ trống) 4. Bấm xác nhận 5. Quan sát phản hồi | Ghi nhận hành vi: hệ thống chặn/cảnh báo, hoặc cho tạo công nợ 100% (Số tiền nợ = X). Ghi nhận kết quả thực tế |
 | 1.6.20 | ☐ | Tiền khách nhập = X (đúng bằng tổng) → không tạo công nợ | 1. Màn hình thanh toán, chọn Tiền mặt 2. Nhập tiền khách = X (bằng tổng đơn) 3. Xác nhận 4. Vào Lịch sử kiểm tra | Đơn tạo thành công với trạng thái "Đã thanh toán", KHÔNG phải "Công nợ" |
-| 1.6.21 | ☐ | Tiền khách nhập > X → tiền thừa, không tạo công nợ | 1. Màn hình thanh toán, chọn Tiền mặt 2. Nhập tiền khách > X (VD X + 10.000) 3. Quan sát dòng tiền thừa 4. Xác nhận, kiểm tra Lịch sử | Hiển thị "Tiền thừa = nhập − X"; đơn tạo với trạng thái "Đã thanh toán", KHÔNG phải "Công nợ" |
+| 1.6.21 | ☐ | Tiền khách nhập > X → tiền thừa, không tạo công nợ | 1. Vào Trang chủ (Cashier) 2. Chọn 1 bàn trống để mở màn Order 3. Chọn danh mục → thêm 1–2 món vào giỏ; ghi lại **tổng đơn = X** 4. Bấm "Thanh toán" 5. Tại màn thanh toán, chọn phương thức "Tiền mặt" 6. Trong ô "Tiền khách đưa", nhập số **lớn hơn X** (VD X + 10.000; có thể bấm nút nhanh 20k/50k/100k) 7. Quan sát dòng phản hồi dưới ô nhập 8. Bấm "Xác nhận"/"Thanh toán" → đơn hoàn tất, bàn về trống 9. Vào menu Lịch sử → tìm đơn vừa tạo (theo bàn/mã/thời gian) → "..." → "Chi tiết" → kiểm tra trạng thái | Bước 7: hiển thị "Tiền thừa = tiền khách đưa − X", KHÔNG hiện "Số tiền nợ"/"Công nợ". Bước 9: đơn ở trạng thái "Đã thanh toán" (thẻ xanh), KHÔNG phải "Công nợ"; không phát sinh dòng nợ |
 | 1.6.22 | ☐ | Reload trang Lịch sử giữ nguyên đơn công nợ | 1. Sau khi tạo công nợ, vào Lịch sử tìm thấy đơn 2. Tải lại trang (F5) 3. Lọc lại "Công nợ", tìm đơn đó 4. Mở chi tiết | Đơn vẫn hiển thị "Công nợ"; số tiền đã trả Y và nợ X−Y không bị thay đổi sau reload |
 | 1.6.23 | ☐ | (Mới) Tạo công nợ bắt buộc chọn thành viên | 1. Trang chủ → chọn bàn → thêm món → Thanh toán → Tiền mặt → nhập tiền khách < tổng (đơn KHÁCH LẺ, chưa chọn thành viên) 2. Bấm Thanh toán | Hệ thống chặn, cảnh báo "Vui lòng chọn thành viên để sử dụng tính năng công nợ". Chỉ khi gán thành viên (VD tranvana) mới hiện "Số tiền nợ", "Số ngày", "Ngày đáo hạn" và tạo được công nợ (phát hiện 0626) |
 | 1.6.24 | ☐ | (Mới) Modal chi tiết công nợ hiển thị đủ 3 dòng tiền | 1. Mở chi tiết đơn công nợ 2. Quan sát khối thanh toán | Có đủ: "Tổng tiền thanh toán" = X, "Khách đưa" = Y, "Tiền khách còn nợ" = X−Y; thẻ & badge màu cam "Công nợ" (xác nhận 0626 trên POS15062092CN2: 10.500 = 5.000 + 5.500) |

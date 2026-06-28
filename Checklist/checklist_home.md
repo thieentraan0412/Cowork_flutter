@@ -1,5 +1,27 @@
 # Checklist — Menu HOME
 
+## Ghi chú UI thực tế (cập nhật từ phiên kiểm thử 0626, phiên bản 1.0.0+80 → +81)
+> - **Tên menu / route:** **"Trang chủ"** (Home) — màn bán hàng tại bàn.
+> - **Sơ đồ bàn:** các tab trạng thái kèm số đếm — **Bàn trống · Đang sử dụng · Chờ xác nhận · Chờ thanh toán**; dropdown **khu** (Tất cả / khu 1 / khu 2); dropdown **số cột** (VD 2/5 cột); nút **Giao diện 1/2**; chế độ xem **"Danh sách" / "Khu vực"** (sơ đồ mặt bằng).
+> - **Bộ lọc trạng thái là TOGGLE cộng dồn (union), KHÔNG phải radio** — bật nhiều tab thì hiện hợp các trạng thái; tắt bớt thì thu lại.
+> - **Số đếm tab trạng thái là TOÀN CỤC** (không đổi theo khu); chỉ **lưới bàn** lọc theo khu.
+> - **Thẻ "BÀN MANG VỀ"** nằm đầu danh sách, được tính vào **"Tất cả"** nhưng KHÔNG thuộc nhóm trạng thái → **Tất cả = tổng các tab + 1**.
+> - **Thẻ bàn (đang dùng / màu cam):** tên bàn · timer · icon hóa đơn + SL · icon khách + SL · tổng tiền · màu trạng thái; có nhãn **"Chưa báo bếp"** khi có món chưa gửi bếp.
+> - **Thực đơn (màn Order):** tab danh mục (Tất cả, Bán chạy, Món mới…); toggle **"Hiện ảnh"**; dropdown **số cột**; ô tìm món **(F1)** — **không phân biệt dấu**, và **tìm trong phạm vi danh mục đang chọn**. Giá định dạng VND (VD "555.000đ").
+> - **Modal tùy chọn món:** tiêu đề **"Chọn món kèm theo"** (Size / Ngọt / Đá / Món thêm); nút +/- SL; ô **Ghi chú** (nhận ký tự đặc biệt); nút **"Thêm vào giỏ hàng"**; nút **X** đóng.
+> - **Hóa đơn / Giỏ hàng:** mã đơn **POS…CN2** sinh ngay khi thêm món; nút **−** giảm SL, nút **X đỏ** xóa dòng; modal **"Thay đổi giá bán"** (nhập thẳng "Giá mới" được, tự tính % Giảm giá); dropdown **"Chọn thành viên"** (nhãn thực tế, không phải "Khách lẻ"); nút **+** tạo nhiều tab hóa đơn / 1 bàn; giỏ trống hiện **"Giỏ hàng trống. Hãy chọn món bên trái!"**; hiển thị tên NV đăng nhập (VD "Admin master"). **Thuế tính theo từng món** (VD 5%).
+> - **Phụ thu:** modal **"Chọn phụ thu"** — để "Không áp dụng" rồi gõ tay thì **preview hiện số nhưng Áp dụng = 0đ** (gây hiểu nhầm).
+> - **In bếp / Thanh toán:** nút **"Báo bếp"** (Chờ báo bếp → Đã báo bếp) · **"Tạm tính"** · phương thức **Tiền mặt / Chuyển khoản / Quẹt Thẻ / QR Tự động**; tiền thừa = tiền nhận − tổng (đúng); **giỏ trống bị chặn thanh toán** (không có toast lỗi rõ).
+> - **Hàng tặng:** banner **"ĐANG TRONG CHẾ ĐỘ CHỌN HÀNG TẶNG (TẶNG 100%)"** + nút HỦY; modal **"Nhập lý do hàng tặng"**; dòng tặng 0đ kèm badge **"Hàng tặng kèm"** (áp tự do, không ràng buộc điều kiện).
+> - **Menu "…" của hóa đơn gồm:** Chuyển bàn · Gộp bàn · Tách/Ghép đơn · Hàng tặng · Khuyến mãi · In tem / In lại tem / In lại phiếu bếp · Hóa đơn điện tử · Đồng giá · Thanh toán đa phương thức.
+> - **Hóa đơn điện tử:** form **"Hóa đơn điện tử"** — nhóm "Thông tin hóa đơn" (Ngày phát hành **dd/MM/yyyy**) + "Thông tin bên mua" (radio **Cá nhân / Doanh nghiệp**).
+> - **Khuyến mãi / Đồng giá:** khi không có chương trình → hiện **"Không có khuyến mãi"** / **"Không có chương trình đồng giá"**.
+> - **Quy ước mã:** đơn **POS…**, ca **SCR…**, gắn hậu tố chi nhánh (VD **CN2**).
+> - **Quirk môi trường (Flutter web) — lưu ý khi test, KHÔNG phải lỗi nghiệp vụ:**
+>   - **Tổng tiền cập nhật TRỄ ~4–7s (async)** sau +/- SL; kết quả cuối đúng nhưng tức thời dễ hiểu nhầm.
+>   - **Renderer treo overlay** sau nhiều thao tác (dropdown không mở / **modal HĐĐT không đóng được bằng X·Esc·click nền**) → phải **F5**.
+>   - Sau **F5**: giữ đăng nhập + vai trò, cài đặt thanh công cụ (cột/chế độ xem/giao diện) được lưu; đơn dở KHÔNG mất (lưu thành "Chưa thanh toán" trong Lịch sử).
+
 1. Trang chủ
 1.1 Sơ đồ bàn
 
@@ -16,7 +38,7 @@
 | 1.1.8 | ☐ | Thẻ bàn hiển thị thông tin | 1. Tại Trang chủ, lọc tab "Đang sử dụng" 2. Quan sát một thẻ bàn đang hoạt động (thẻ màu vàng/cam) 3. Kiểm tra từng thông tin: tên bàn, timer, icon hóa đơn, icon số khách, tổng tiền, nhãn trạng thái | Đúng tên, timer, số hóa đơn, số khách, tổng tiền, trạng thái |
 | 1.1.9 | ☐ | Tổng tiền trên thẻ bàn | 1. Bấm vào bàn đang sử dụng để vào màn hình Order 2. Ghi nhận tổng tiền thanh toán hiển thị (đã tính thuế) 3. Bấm "Back" về Trang chủ 4. So sánh tổng tiền trên thẻ bàn với con số vừa ghi nhận | Khớp tổng đơn của bàn (Không gồm thuế) |
 | 1.1.10 | ☐ | Trạng thái "Chưa báo bếp" | 1. Bấm vào bàn đang sử dụng, thêm ít nhất 1 món mới vào đơn 2. "Không" bấm nút "Gửi bếp / Báo bếp" 3. Back về Trang chủ 4. Quan sát thẻ bàn đó | Hiển thị nhãn "Chưa báo bếp" trên thẻ bàn |
-| 1.1.11 | ☐ | Nút "Xác nhận" trên thẻ | 1. Tại Trang chủ, lọc tab "Chờ xác nhận" 2. Tìm thẻ bàn có nút "Xác nhận" 3. Bấm nút "Xác nhận" trực tiếp trên thẻ bàn 4. Quan sát trạng thái thẻ bàn sau thao tác | Đơn được xác nhận, trạng thái cập nhật sang "Đang sử dụng" |
+| 1.1.11 | ☐ | Nút "Xác nhận" trên thẻ | 1. Tạo trước 1 đơn "Chờ xác nhận": mở link Đặt món QR (Link.md) → quét/chọn QR một bàn (VD BAN 2) → đặt món → gửi đơn 2. Quay lại Trang chủ (Cashier), lọc tab "Chờ xác nhận" 3. Tìm thẻ bàn vừa đặt, có nút "Xác nhận" 4. Bấm nút "Xác nhận" trực tiếp trên thẻ bàn 5. Quan sát trạng thái thẻ bàn sau thao tác | Đơn được xác nhận, trạng thái cập nhật sang "Đang sử dụng" |
 | 1.1.12 | ☐ | Bấm vào bàn | 1. Tại Trang chủ, chọn bất kỳ thẻ bàn nào 2. Bấm vào vùng thân thẻ bàn 3. Quan sát màn hình mở ra | Mở màn hình Order của bàn đó |
 | 1.1.13 | ☐ | Thêm đơn mang về | 1. Tại Trang chủ, tìm thẻ "Bàn mang về" (thẻ có icon Takeaway, vị trí đầu danh sách) 2. Bấm vào thẻ đó 3. Quan sát màn hình mở ra | Mở màn hình Order ở chế độ Mang đi |
 | 1.1.14 | ☐ | Số liệu các tab nhất quán | 1. Tại Trang chủ, ghi lại số đếm từng tab: "Bàn trống (n1)", "Đang sử dụng (n2)", "Chờ xác nhận (n3)", "Chờ thanh toán (n4)" 2. Tính tổng: n1 + n2 + n3 + n4 3. So sánh với số hiển thị tại tab "Tất cả" (Note: "Bàn mang về" được tính vào "Tất cả" nhưng không thuộc nhóm trạng thái nào) | Tổng các tab = tổng tất cả |
@@ -96,18 +118,23 @@
 
 1.6 Xác nhận đơn (tại bàn / QR / mang về)
 
-try cập link đặt món QR_BAN để đặt món trong link.md
+**Cách tạo đơn QR (đơn "Chờ xác nhận")** — dùng cho các testcase bên dưới:
+1. Mở link **Đặt món QR** trong `Link/Link.md` (https://table1.klkim.com/v2/system/table) — trang admin quản lý bàn, hiện mã QR của từng bàn.
+2. Quét bằng điện thoại hoặc click vào mã QR của bàn cần đặt → mở trang đặt món của khách.
+3. Trong trang đặt món: chọn danh mục → chọn món → (chọn tùy chọn Size/Topping nếu có) → bấm "Thêm vào giỏ".
+4. Mở giỏ hàng → bấm "Đặt món" / "Gửi đơn".
+5. Đơn rơi vào tab "Chờ xác nhận" của màn Cashier (Trang chủ).
 
 
 | STT | ✓ | Testcase | Các bước thực hiện | Kết quả mong đợi |
 |-----|---|----------|--------------------|------------------|
 | 1.6.1 | ☐ | Tab "Chờ xác nhận" hiển thị đơn chờ | 1. Tại Trang chủ, bấm chọn checkbox "Chờ xác nhận" 2. Quan sát danh sách bàn lọc ra 3. Kiểm tra các đơn hiển thị | Hiện đúng các đơn đang chờ thu ngân xác nhận |
-| 1.6.2 | ☐ | Xác nhận đơn tại bàn (gửi từ tablet/mobile) | 1. Đảm bảo có đơn được nhân viên gửi từ thiết bị tablet/mobile 2. Tại Trang chủ, lọc "Chờ xác nhận", tìm bàn tương ứng 3. Bấm vào thẻ bàn → bấm "Xác nhận" 4. Quan sát trạng thái bàn | Đơn được tiếp nhận vào bàn, trạng thái chuyển sang "Đang sử dụng" |
-| 1.6.3 | ☐ | Xác nhận đơn QR (khách quét QR tại bàn) | 1. Khách quét mã QR tại bàn và đặt món 2. Tại Trang chủ, lọc "Chờ xác nhận", tìm bàn của khách 3. Bấm vào thẻ bàn → bấm "Xác nhận" 4. Quan sát trạng thái | Đơn QR của khách được tiếp nhận vào bàn |
-| 1.6.4 | ☐ | Xác nhận đơn mang về | 1. Có đơn mang về đang chờ xác nhận 2. Tại Trang chủ, lọc "Chờ xác nhận", tìm thẻ đơn mang về 3. Bấm "Xác nhận" 4. Quan sát kết quả | Đơn mang về được tiếp nhận vào hệ thống |
-| 1.6.5 | ☐ | Từ chối đơn | 1. Tại Trang chủ, lọc "Chờ xác nhận", tìm bàn có đơn chờ 2. Bấm vào thẻ bàn, chọn "Từ chối" thay vì "Xác nhận" 3. Quan sát kết quả | Đơn bị từ chối, không tiếp nhận vào bàn |
-| 1.6.6 | ☐ | Tìm kiếm/chọn bàn cần xác nhận | 1. Tại Trang chủ đang lọc "Chờ xác nhận", dùng dropdown khu hoặc tìm kiếm để lọc bàn cụ thể 2. Quan sát kết quả | Lọc đúng bàn/đơn cần tìm |
-| 1.6.7 | ☐ | Sau xác nhận, số đếm "Chờ xác nhận" giảm | 1. Ghi nhận số đếm trên checkbox "Chờ xác nhận" (VD: Chờ xác nhận (3)) 2. Xác nhận một đơn 3. Quan sát lại số đếm trên checkbox | Số đếm giảm đúng 1 đơn sau mỗi lần xác nhận |
+| 1.6.2 | ☐ | Xác nhận đơn tại bàn (đặt từ xa) | 1. Tạo đơn chờ xác nhận: mở link Đặt món QR (Link.md) → chọn 1 bàn → đặt món → gửi 2. Tại Trang chủ, lọc "Chờ xác nhận", tìm bàn tương ứng 3. Bấm vào thẻ bàn → bấm "Xác nhận" 4. Quan sát trạng thái bàn | Đơn được tiếp nhận vào bàn, trạng thái chuyển sang "Đang sử dụng" |
+| 1.6.3 | ☐ | Xác nhận đơn QR (khách quét QR tại bàn) | 1. Mở link Đặt món QR (Link.md) → quét/chọn QR của 1 bàn → đặt món → gửi (mô phỏng khách quét QR) 2. Tại Trang chủ, lọc "Chờ xác nhận", tìm bàn của khách 3. Bấm vào thẻ bàn → bấm "Xác nhận" 4. Quan sát trạng thái | Đơn QR của khách được tiếp nhận vào bàn |
+| 1.6.4 | ☐ | Xác nhận đơn mang về | 1. Tạo đơn mang về: vào trang admin quản lý bàn (link Đặt món QR — system/table), quét/click mã QR của **bàn Mang về** → chọn món → "Thêm vào giỏ" → mở giỏ → "Đặt món"/"Gửi đơn" 2. Tại Trang chủ Cashier, lọc "Chờ xác nhận", tìm thẻ đơn mang về 3. Bấm "Xác nhận" 4. Quan sát kết quả | Đơn mang về được tiếp nhận vào hệ thống |
+| 1.6.5 | ☐ | Từ chối đơn | 1. Tạo 1 đơn chờ xác nhận: mở link Đặt món QR (system/table) → quét/click mã QR 1 bàn → chọn món → "Thêm vào giỏ" → mở giỏ → "Đặt món"/"Gửi đơn" 2. Tại Trang chủ Cashier, lọc "Chờ xác nhận", tìm bàn có đơn chờ 3. Bấm vào thẻ bàn, chọn "Từ chối" thay vì "Xác nhận" 4. Quan sát kết quả | Đơn bị từ chối, không tiếp nhận vào bàn |
+| 1.6.6 | ☐ | Tìm kiếm/chọn bàn cần xác nhận | 1. Tạo vài đơn chờ xác nhận qua link Đặt món QR (nhiều bàn khác nhau) 2. Tại Trang chủ đang lọc "Chờ xác nhận", dùng dropdown khu hoặc tìm kiếm để lọc bàn cụ thể 3. Quan sát kết quả | Lọc đúng bàn/đơn cần tìm |
+| 1.6.7 | ☐ | Sau xác nhận, số đếm "Chờ xác nhận" giảm | 1. Tạo ≥1 đơn chờ xác nhận qua link Đặt món QR 2. Ghi nhận số đếm trên checkbox "Chờ xác nhận" (VD: Chờ xác nhận (3)) 3. Xác nhận một đơn 4. Quan sát lại số đếm trên checkbox | Số đếm giảm đúng 1 đơn sau mỗi lần xác nhận |
 
 1.7 Gửi bếp
 
@@ -193,18 +220,19 @@ try cập link đặt món QR_BAN để đặt món trong link.md
 | 1.11.3 | ☐ | Chọn lý do tặng | 1. Khi thêm món tặng, quan sát có bước chọn lý do tặng 2. Chọn một lý do từ danh sách 3. Xác nhận | Lý do được ghi nhận kèm theo dòng món tặng |
 | 1.11.4 | ☐ | Món tặng hiển thị trong đơn | 1. Sau khi thêm hàng tặng thành công 2. Quan sát dòng món tặng trong hóa đơn | Dòng món tặng thể hiện rõ là hàng tặng (nhãn hoặc giá 0đ) |
 | 1.11.5 | ☐ | Hàng tặng không cộng vào tổng tiền | 1. Ghi nhận tổng tiền thanh toán trước khi thêm hàng tặng 2. Thêm món tặng vào đơn 3. So sánh tổng tiền thanh toán trước và sau | Tổng tiền thanh toán không thay đổi sau khi thêm hàng tặng |
-| 1.11.6 | ☐ | Đơn không thỏa điều kiện | 1. Tạo đơn với giá trị thấp hoặc không đủ điều kiện áp hàng tặng 2. Thử mở chức năng hàng tặng 3. Quan sát phản hồi | Hệ thống không cho áp, hiển thị thông báo phù hợp |
+| 1.11.6 | ☐ | Hàng tặng áp tự do (không ràng buộc điều kiện) | 1. Tạo đơn bất kỳ (kể cả giá trị thấp) 2. Mở "..." → "Hàng tặng" 3. Chọn 1 món để tặng, nhập lý do 4. Quan sát phản hồi | Hàng tặng được áp tự do, KHÔNG bị chặn bởi điều kiện; món tặng vào đơn ở mức 0đ |
 
 1.12 Áp dụng khuyến mãi
-Lưu ý: Đơn phải có sản phẩm, đơn đủ điều kiện thì mới hiện khuyến mãi lên
+Lưu ý: Đơn phải có sản phẩm, đơn đủ điều kiện thì mới hiện khuyến mãi lên.
+Chuẩn bị dữ liệu: cấu hình chương trình khuyến mãi tại link **CTKM** trong `Link/Link.md` (https://table1.klkim.com/v2/crm/promotion-program). Admin và Cashier là 2 link riêng nên **không cần đăng xuất** — sau khi tạo/sửa CTKM, chỉ cần quay lại trang Cashier (tải lại trang nếu cần) để áp dụng.
 
 | STT | ✓ | Testcase | Các bước thực hiện | Kết quả mong đợi |
 |-----|---|----------|--------------------|------------------|
 | 1.12.1 | ☐ | Mở chức năng khuyến mãi trên đơn | 1. Trong màn hình Order có món, tìm nút "..." hoặc mục "Khuyến mãi" 2. Bấm mở chức năng khuyến mãi 3. Quan sát danh sách | Hiện danh sách chương trình khuyến mãi còn hiệu lực |
-| 1.12.2 | ☐ | Áp khuyến mãi vào đơn | 1. Mở danh sách khuyến mãi, chọn một CTKM phù hợp 2. Xác nhận áp 3. Quan sát dòng "Giảm giá" và Tổng tiền thanh toán | Giảm giá áp đúng theo CTKM, tổng tiền thanh toán giảm tương ứng |1.1.11 
-| 1.12.3 | ☐ | CTKM hết hiệu lực | 1. Mở danh sách khuyến mãi 2. Tìm CTKM đã hết ngày hoặc hết lượt 3. Quan sát xem có hiển thị không | CTKM hết hiệu lực không xuất hiện trong danh sách hoặc không áp được |
-| 1.12.4 | ☐ | Đơn không thỏa điều kiện CTKM | 1. Tạo đơn có giá trị thấp hơn điều kiện tối thiểu của CTKM 2. Thử áp CTKM đó 3. Quan sát phản hồi | Hệ thống không cho áp, hiển thị thông báo lỗi |
-| 1.12.5 | ☐ | Bỏ khuyến mãi đã áp | 1. Sau khi đã áp CTKM thành công, tìm tùy chọn gỡ/bỏ khuyến mãi 2, muốn gỡ khuyến mãi, click vào menu chức năng, xong click vào khuyến mãi, tắt đi khuyến mãi đó lại  3. Quan sát lại Tổng tiền thanh toán | Giảm giá bị xóa, tổng tiền hoàn về giá gốc |
+| 1.12.2 | ☐ | Áp khuyến mãi vào đơn | 1. Tạo trước 1 CTKM còn hiệu lực & đủ điều kiện tại link CTKM (Link.md), rồi quay lại trang Cashier 2. Tạo đơn đủ điều kiện 3. Mở danh sách khuyến mãi, chọn CTKM 4. Xác nhận áp 5. Quan sát dòng "Giảm giá" và Tổng tiền thanh toán | Giảm giá áp đúng theo CTKM, tổng tiền thanh toán giảm tương ứng |
+| 1.12.3 | ☐ | CTKM hết hiệu lực | 1. Tại link CTKM, tạo/đặt 1 CTKM đã hết ngày (hoặc hết lượt) 2. Mở danh sách khuyến mãi trên đơn 3. Quan sát CTKM đó có hiển thị/áp được không | CTKM hết hiệu lực không xuất hiện trong danh sách hoặc không áp được |
+| 1.12.4 | ☐ | Đơn không thỏa điều kiện CTKM | 1. Tại link CTKM, cấu hình 1 CTKM có điều kiện tối thiểu (VD đơn ≥ 100.000) 2. Tạo đơn có giá trị thấp hơn điều kiện 3. Thử áp CTKM đó 4. Quan sát phản hồi | Hệ thống không cho áp / không hiện CTKM, thông báo phù hợp |
+| 1.12.5 | ☐ | Bỏ khuyến mãi đã áp | 1. Áp thành công 1 CTKM (theo bước 1.12.2) 2. Mở menu chức năng "..." → "Khuyến mãi" → tắt CTKM đang áp 3. Quan sát lại Tổng tiền thanh toán | Giảm giá bị xóa, tổng tiền hoàn về giá gốc |
 | 1.12.6 | ☐ | Chưa mở ca | 1. Đảm bảo ca chưa được mở 2. Vào màn hình Order, thử mở chức năng khuyến mãi 3. Quan sát phản hồi | Hệ thống chặn, không cho áp khuyến mãi |
 
 1.13 Hủy đơn (note: hủy đơn là nút x cạnh tab hóa đơn)
@@ -224,7 +252,7 @@ Lưu ý: Đơn phải có sản phẩm, đơn đủ điều kiện thì mới hi
 | 1.14.1 | ☐ | Tab "Chờ thanh toán" hiển thị đơn chờ | 1. Tại Trang chủ, bấm chọn checkbox "Chờ thanh toán" 2. Quan sát danh sách bàn lọc ra | Hiển thị đúng các bàn/đơn đang chờ thanh toán |
 | 1.14.2 | ☐ | Thanh toán từ tab Chờ thanh toán | 1. Tại Trang chủ, lọc tab "Chờ thanh toán" 2. Bấm vào bàn cần thanh toán 3. Thực hiện thanh toán đơn 4. Quan sát bàn sau khi xong | Thanh toán thành công, bàn về trạng thái trống |
 | 1.14.3 | ☐ | Thanh toán bằng cách chọn bàn đang dùng | 1. Tại Trang chủ, bấm trực tiếp vào bàn đang sử dụng 2. Vào màn hình Order của bàn đó 3. Thực hiện thanh toán theo yêu cầu khách | Thanh toán thành công, bàn về trống |
-| 1.14.4 | ☐ | Thanh toán đơn order gửi từ tablet/mobile | 1. Đảm bảo có đơn được gửi từ thiết bị tablet/mobile của khách 2. Tại màn hình cashier, xác nhận đơn vào bàn 3. Thực hiện thanh toán đơn đó | Đơn được tiếp nhận và thanh toán đúng |
+| 1.14.4 | ☐ | Thanh toán đơn đặt từ xa (QR/tablet) | 1. Tạo 1 đơn qua link Đặt món QR (Link.md) 2. Tại màn Cashier, xác nhận đơn vào bàn (theo mục 1.6) 3. Thực hiện thanh toán đơn đó | Đơn được tiếp nhận và thanh toán đúng |
 
 1.15 Trường hợp đặc thù & lỗi
 
@@ -233,8 +261,7 @@ Lưu ý: Đơn phải có sản phẩm, đơn đủ điều kiện thì mới hi
 | 1.15.1 | ☐ | Số lượng món = 0 | 1. Trong hóa đơn, giảm số lượng một món về 0 (nếu cho phép nhập tay) 2. Thử lưu hoặc thanh toán 3. Quan sát phản hồi | Hệ thống không cho lưu, xử lý đúng khi số lượng = 0 |
 | 1.15.2 | ☐ | Giá rất lớn (999,999,999đ) | 1. Vào cấu hình hoặc chỉnh sửa đơn giá thủ công, nhập giá trị rất lớn (VD: 999,999,999đ) 2. Thêm vào hóa đơn 3. Quan sát hiển thị và tổng tiền | Tính và hiển thị đúng số lớn, không bị tràn giao diện |
 | 1.15.3 | ☐ | Làm tròn tiền VND | 1. Tạo đơn có thuế % dẫn đến kết quả lẻ thập phân (VD: 10% của 15,000đ = 1,500đ) 2. Quan sát tổng tiền thanh toán | Tổng tiền hiển thị số nguyên, không có số lẻ thập phân |
-| 1.15.4 | ☐ | Mất mạng khi thanh toán | 1. Chuẩn bị đơn hàng sẵn sàng thanh toán 2. Tắt mạng (ngắt WiFi hoặc kéo cáp) 3. Bấm "Thanh toán" 4. Bật lại mạng, kiểm tra trong Lịch sử đơn | Đơn không bị tạo trùng, dữ liệu nhất quán |
-| 1.15.5 | ☐ | Hai thu ngân cùng 1 bàn | 1. Mở bàn đang có đơn trên 2 thiết bị/tab khác nhau 2. Cả 2 cùng thêm món hoặc chỉnh sửa đồng thời 3. Quan sát kết quả trên cả 2 thiết bị | Không bị ghi đè hoặc mất dữ liệu của nhau |
+| 1.15.4 | ☐ | Mất mạng khi thanh toán | 1. Chuẩn bị đơn hàng sẵn sàng thanh toán 2. Mở Chrome DevTools (F12) → tab Network → đặt Throttling = "Offline" 3. Bấm "Thanh toán" 4. Đặt lại Network = "No throttling" (online), kiểm tra trong Lịch sử đơn | App báo lỗi mạng phù hợp; sau khi online lại, đơn không bị tạo trùng, dữ liệu nhất quán |
 | 1.15.6 | ☐ | Ghi chú có dấu / ký tự đặc biệt | 1. Trong hóa đơn, tích checkbox "Ghi chú" trên một dòng món 2. Nhập nội dung có dấu tiếng Việt và ký tự đặc biệt (VD: @, #, !, ...) 3. Lưu và quan sát lại dòng món | Ghi chú lưu và hiển thị đúng, không bị lỗi ký tự |
 
 1.16 In tem / In lại tem / In lại phiếu bếp (trong menu "..." của hóa đơn)
@@ -265,7 +292,7 @@ Lưu ý: Đơn phải có sản phẩm, đơn đủ điều kiện thì mới hi
 |-----|---|----------|--------------------|------------------|
 | 1.18.1 | ☐ | Mở chức năng Đồng giá | 1. Màn hình Order có món 2. Bấm "..." → "Đồng giá" 3. Quan sát modal | Hiện modal "Đồng giá" kèm cảnh báo "Áp dụng đồng giá sẽ thay thế giá hiện tại của các món. Kiểm tra kỹ trước khi xác nhận." |
 | 1.18.2 | ☐ | Không có chương trình đồng giá | 1. Mở modal Đồng giá khi chưa cấu hình chương trình nào 2. Quan sát | Hiển thị "Không có chương trình đồng giá"; bấm "Áp dụng" không thay đổi giá |
-| 1.18.3 | ☐ | Áp dụng chương trình đồng giá | 1. Có chương trình đồng giá hợp lệ 2. Chọn chương trình, bấm "Áp dụng" 3. Quan sát giá các món và tổng tiền | Giá các món được thay bằng giá đồng giá; tổng tiền cập nhật đúng |
+| 1.18.3 | ☐ | Áp dụng chương trình đồng giá | 1. Tạo trước 1 chương trình đồng giá tại link **Đồng giá** trong `Link/Link.md` (https://table1.klkim.com/v2/crm/promotion-program), rồi quay lại trang Cashier 2. Tạo đơn có món 3. Mở "..." → "Đồng giá", chọn chương trình, bấm "Áp dụng" 4. Quan sát giá các món và tổng tiền | Giá các món được thay bằng giá đồng giá; tổng tiền cập nhật đúng |
 | 1.18.4 | ☐ | Đóng không áp dụng | 1. Mở modal Đồng giá 2. Bấm "Đóng" 3. Quan sát | Đóng modal, giá các món giữ nguyên |
 
 1.19 Thanh toán đa phương thức (trong menu "..." của hóa đơn)

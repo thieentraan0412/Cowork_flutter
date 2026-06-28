@@ -1,5 +1,25 @@
 # Checklist — Thu chi
 
+## Ghi chú UI thực tế (cập nhật từ phiên kiểm thử 0626, phiên bản 1.0.0+80)
+> - **Tên menu / route:** **"Thu chi"** — route `pos-cashbook-route`.
+> - **Quy ước mã phiếu (thực tế):** phiếu thu **PC…**, phiếu chi **PT…**, gắn hậu tố chi nhánh (VD **CN2**) — **KHÔNG** phải "vote-00001". Mã tăng tự động theo 2 chuỗi riêng PC/PT; mã thật hiện sau khi tạo.
+> - **4 thẻ tổng quan:** **Tồn quỹ đầu kỳ · Tổng thu · Tổng chi · Số dư cuối ca** (= Tồn quỹ cuối kỳ).
+> - **Công thức quỹ:** Số dư cuối ca = **Tồn đầu kỳ + Tổng thu − Tổng chi** (đúng ở mọi kỳ).
+> - **Bộ lọc:** Mã phiếu · Chi nhánh (CN1 / cn11 / cn12) · Thời gian (Hôm nay/Hôm qua/Tuần này/Tuần trước/Tháng này/Tháng trước + khoảng ngày) · Người tạo · Loại thu chi (Thu/Chi) · Phân loại · **Loại nguồn** (Bán hàng / Mua hàng / Trả hàng / Tự tạo). Lọc Loại nguồn là **multi-select** (cộng dồn).
+> - **Bảng phiếu (13 cột):** STT · Mã phiếu · Loại thu chi · Số tiền · Tên chi nhánh · Người nộp/nhận · Người tạo · Phân loại · PTTT · Đính kèm · Thời gian · Mô tả · Hành động. Có phân trang; mặc định **mới nhất lên đầu**.
+> - **Modal "Thêm phiếu":** Mã phiếu (tự sinh) · **Loại thu chi*** · **Phân loại*** · **"Loại nhân sự"** (Quản lý / Quầy bếp / Thu ngân / Nhân viên order / Khác) liên động **"Người nộp / Người nhận"** + nút Tạo · **Số tiền*** · PTTT (mặc định **Tiền mặt**) · Đính kèm · **Mô tả (giới hạn 200 ký tự)**. Nút lưu là **"Tạo mới"**. Số tiền = 0 bị chặn ("Số tiền phải lớn hơn 0").
+> - **Phân quyền thao tác:** phiếu **tự sinh** (Bán hàng / Trả hàng) **chỉ-xem**; phiếu **"Tự tạo"** (thủ công) mới có **Sửa / Xóa**. Xóa có hộp xác nhận "Bạn có chắc chắn muốn xóa không?".
+> - **Định dạng số tiền:** danh sách hiển thị dấu chấm + "đ" (VD "1.500.000đ").
+> - **Tab "Công nợ":** panel Bộ lọc (Đối tượng: **Khách hàng + Nhà cung cấp**, mặc định tích cả 2 · Tên đối tượng · Mã công nợ · Chi nhánh · Người tạo); chip **Tất cả / Gần đến hạn / Quá hạn / Hôm nay**; bảng có Mã công nợ, Loại/Tên đối tượng, Chưa TT, Đã TT, Tổng tiền, Hạn còn, Ngày đáo hạn, Trạng thái; modal **"Thanh toán nợ"**. (Chưa TT + Đã TT = Tổng tiền.)
+> - **Xuất Excel:** thông báo "Đã xuất file, đang tải xuống trình duyệt".
+> - **Lệch / lỗi UI đã ghi nhận (lưu ý khi viết kỳ vọng):**
+>   - Ô **Số tiền** hiện **nhận cả ký tự chữ** và **không tự chèn dấu** khi gõ.
+>   - Nhãn **"Người nộp / Người nhận" luôn gộp**, không đổi theo Thu/Chi.
+>   - **Sắp xếp theo cột (Số tiền / Thời gian) không hoạt động** (không có mũi tên).
+>   - **FIND-BALANCE:** lọc Loại = "Phiếu chi" làm **Tồn đầu kỳ đổi và có thể ra ÂM** (đầu kỳ lẽ ra cố định, không đổi theo bộ lọc loại).
+>   - Còn **dữ liệu rác mã toàn số 0** (PT00000000 / PC00000000) từ bug cũ.
+> - **Quirk môi trường (Flutter web):** bộ lọc **"Tháng này" tải chậm/treo** (>13s); modal **không đóng được bằng Esc / click ngoài** (chỉ X hoặc Lưu); **lớp phủ ma** kẹt overlay → **reload** là khắc phục.
+
 1. Thu chi
 1.1 Bộ lọc
 
@@ -71,19 +91,34 @@
 
 1.5 Ghi nhận 4 loại phiếu (logic chính)
 
+**Chuẩn bị dữ liệu nguồn (cho các phiếu tự sinh):**
+- **Bán hàng** → sinh phiếu Thu tự động: vào **Trang chủ (Cashier)** → chọn bàn → thêm món → "Thanh toán" → chọn PTTT → "Xác nhận". Đơn thanh toán xong sẽ sinh 1 phiếu Thu (PC…) nguồn "Bán hàng".
+- **Trả hàng** → sinh phiếu Chi tự động: vào menu **Return** (xem `run/run_return.md`) → tìm đơn đã bán → chọn món/số lượng trả → xác nhận hoàn tiền. Sẽ sinh 1 phiếu Chi nguồn "Trả hàng".
+- **Mua hàng** → phiếu Chi từ nghiệp vụ mua hàng/nhập kho (chỉ test được nếu môi trường có module mua hàng; nếu không có, ghi **N/A**).
+- **Tự tạo** → phiếu Thu/Chi tạo thủ công bằng nút "Thêm" trên trang Thu chi.
+
+Sau khi tạo, quay lại trang Thu chi, lọc theo "Loại nguồn" tương ứng để tìm phiếu vừa sinh.
+
 | STT | ✓ | Testcase | Các bước thực hiện | Kết quả mong đợi |
 |-----|---|----------|--------------------|------------------|
 | 1.5.1 | ☐ | Tạo Phiếu thu thủ công | 1. Vào trang Thu chi, ghi nhận "Tổng thu" và "Tồn quỹ cuối kỳ" hiện tại 2. Bấm "Thêm", chọn Loại = "Thu", nhập số tiền (VD: 100,000đ), bấm "Lưu" 3. Quan sát danh sách và thẻ tổng quan | Phiếu mới có Loại = Thu xuất hiện; Tổng thu và Tồn quỹ cuối kỳ tăng đúng 100,000đ |
 | 1.5.2 | ☐ | Tạo Phiếu chi thủ công | 1. Vào trang Thu chi, ghi nhận "Tổng chi" và "Tồn quỹ cuối kỳ" hiện tại 2. Bấm "Thêm", chọn Loại = "Chi", nhập số tiền (VD: 50,000đ), bấm "Lưu" 3. Quan sát danh sách và thẻ tổng quan | Phiếu mới có Loại = Chi xuất hiện; Tổng chi tăng và Tồn quỹ cuối kỳ giảm đúng 50,000đ |
 | 1.5.3 | ☐ | Phiếu thu hiển thị đúng thông tin | 1. Trong danh sách phiếu, tìm một phiếu thu thủ công vừa tạo 2. Kiểm tra từng cột: Loại = Thu, Số tiền đúng, tên Người nộp, PTTT đã chọn | Tất cả cột hiển thị đúng với dữ liệu đã nhập lúc tạo |
 | 1.5.4 | ☐ | Phiếu chi hiển thị đúng thông tin | 1. Trong danh sách phiếu, tìm một phiếu chi thủ công vừa tạo 2. Kiểm tra từng cột: Loại = Chi, Số tiền đúng, tên Người nhận, PTTT đã chọn | Tất cả cột hiển thị đúng với dữ liệu đã nhập lúc tạo |
-| 1.5.5 | ☐ | Hoàn tất đơn bán → tự sinh Phiếu bán hàng | 1. Vào cashier, chọn bàn, thêm món, thực hiện thanh toán thành công 2. Quay lại trang Thu chi, lọc "Loại nguồn = Bán hàng" 3. Tìm phiếu vừa sinh ra tương ứng với đơn bán 4. Kiểm tra thông tin phiếu | Phiếu Loại = Thu, Loại nguồn = Bán hàng, số tiền = tổng đơn bán vừa thanh toán |
+| 1.5.5 | ☐ | Hoàn tất đơn bán → tự sinh Phiếu bán hàng | **Tạo đơn bán:** 1. Vào **Trang chủ (Cashier)** 2. Bấm chọn 1 bàn (trống hoặc đang dùng) để mở màn hình Order 3. Chọn danh mục món → bấm 1 món; nếu món có tùy chọn (Size/Topping) thì chọn rồi bấm "Thêm vào giỏ hàng" 4. (Tùy chọn) bấm "Báo bếp" 5. Bấm "Thanh toán" 6. Chọn phương thức (VD "Tiền mặt"), nhập số tiền khách đưa 7. Bấm "Xác nhận" → đơn hoàn tất, bàn về trống. Ghi lại **tổng tiền đã thanh toán** và **PTTT**. **Đối chiếu Thu chi:** 8. Vào trang Thu chi → lọc "Loại nguồn = Bán hàng" 9. Tìm phiếu vừa sinh tương ứng đơn bán → kiểm tra thông tin | Phiếu Loại = Thu, Loại nguồn = Bán hàng, số tiền = tổng đơn bán vừa thanh toán, PTTT khớp |
+<!-- TẠM ẨN — chức năng Trả hàng đang pending; bật lại khi hoàn thiện
 | 1.5.6 | ☐ | Thực hiện trả hàng → tự sinh Phiếu trả hàng | 1. Thực hiện một phiếu trả hàng (hoàn tiền) từ màn hình cashier hoặc quản lý đơn 2. Quay lại trang Thu chi, lọc "Loại nguồn = Trả hàng" 3. Tìm phiếu vừa sinh ra 4. Kiểm tra thông tin phiếu | Phiếu Loại = Chi (hoàn tiền), Loại nguồn = Trả hàng, số tiền = giá trị hàng trả |
+-->
+
 | 1.5.7 | ☐ | Lọc Loại nguồn = Bán hàng | 1. Vào trang Thu chi 2. Bật bộ lọc "Loại nguồn", chọn "Bán hàng" 3. Quan sát toàn bộ danh sách | Chỉ hiện các phiếu được sinh tự động từ đơn bán hàng |
+<!-- TẠM ẨN — chức năng Trả hàng đang pending; bật lại khi hoàn thiện
 | 1.5.8 | ☐ | Lọc Loại nguồn = Trả hàng | 1. Vào trang Thu chi 2. Bật bộ lọc "Loại nguồn", chọn "Trả hàng" 3. Quan sát toàn bộ danh sách | Chỉ hiện các phiếu được sinh tự động từ phiếu trả hàng |
+-->
 | 1.5.9 | ☐ | Lọc Loại nguồn = Tự tạo | 1. Vào trang Thu chi 2. Bật bộ lọc "Loại nguồn", chọn "Tự tạo" 3. Quan sát toàn bộ danh sách | Chỉ hiện các phiếu thu/chi được tạo thủ công bởi nhân viên |
 | 1.5.10 | ☐ | Số tiền phiếu bán hàng khớp đơn gốc | 1. Ghi lại tổng tiền thanh toán của một đơn bán vừa hoàn tất (VD: 250,000đ) 2. Vào trang Thu chi, lọc Loại nguồn = Bán hàng 3. Tìm phiếu tương ứng với đơn đó 4. So sánh số tiền phiếu với tổng đơn | Số tiền phiếu bán hàng = tổng tiền thanh toán đơn gốc |
+<!-- TẠM ẨN — chức năng Trả hàng đang pending; bật lại khi hoàn thiện
 | 1.5.11 | ☐ | Số tiền phiếu trả hàng khớp đơn gốc | 1. Ghi lại giá trị hàng trả của một phiếu trả hàng vừa thực hiện 2. Vào trang Thu chi, lọc Loại nguồn = Trả hàng 3. Tìm phiếu tương ứng 4. So sánh số tiền | Số tiền phiếu trả hàng = giá trị hàng trả của đơn gốc |
+-->
 | 1.5.12 | ☐ | PTTT của phiếu tự sinh khớp đơn gốc | 1. Hoàn tất một đơn bán bằng phương thức "Chuyển khoản" 2. Vào trang Thu chi, tìm phiếu sinh ra từ đơn đó 3. Kiểm tra cột "PTTT" của phiếu | PTTT của phiếu = phương thức thanh toán của đơn bán/trả gốc (VD: Chuyển khoản) |
 | 1.5.13 | ☐ | Đơn bán bị hủy → phiếu không tính vào quỹ | 1. Ghi nhận Tổng thu hiện tại 2. Tạo một đơn bán rồi hủy đơn đó (không thanh toán) 3. Vào trang Thu chi, kiểm tra Tổng thu và Tồn quỹ | Tổng thu và Tồn quỹ không thay đổi; không có phiếu mới sinh ra từ đơn bị hủy |
 | 1.5.14 | ☐ | Số liệu Thu chi khớp với Điều phối ca | 1. Mở tab Điều phối ca, ghi lại số tiền và PTTT của một giao dịch bất kỳ trong ca 2. Vào trang Thu chi, tìm phiếu tương ứng 3. So sánh số tiền và PTTT giữa hai màn hình | Số tiền và phương thức thanh toán khớp nhau, không bị lệch |
@@ -132,7 +167,7 @@
 > Các mục **1.8 trở đi** dùng đúng thuật ngữ/giá trị thực tế trên giao diện hiện tại:
 > - Mã phiếu thực tế: **PC…** (phiếu thu) / **PT…** (phiếu chi) — KHÔNG phải "vote-00001".
 > - Thẻ tổng quan: **Tồn đầu kỳ · Tổng thu · Tổng chi · Số dư cuối ca**.
-> - Modal Thêm phiếu: trường **"Loại nhân sự"** (Quản lý / Quầy bếp / Thu ngân / Nhân viên order / Khác) liên động **"Người nộp/Người nhận"**; nút lưu là **"Tạo mới"**; ô **Mô tả** giới hạn **50** ký tự.
+> - Modal Thêm phiếu: trường **"Loại nhân sự"** (Quản lý / Quầy bếp / Thu ngân / Nhân viên order / Khác) liên động **"Người nộp/Người nhận"**; nút lưu là **"Tạo mới"**; ô **Mô tả** giới hạn **200** ký tự.
 > - Bộ lọc **"Loại nguồn"**: Bán hàng / Mua hàng / Trả hàng / Tự tạo.
 
 1.8 Sửa phiếu thu chi
@@ -196,7 +231,7 @@
 | 1.12.2 | ☐ | Số tiền có phần thập phân | 1. Mở Thêm phiếu 2. Nhập "1000.5" hoặc "1000,5" vào Số tiền 3. Lưu | Xử lý nhất quán: làm tròn hoặc chặn; không lưu giá trị sai lệch |
 | 1.12.3 | ☐ | Số tiền âm | 1. Mở Thêm phiếu 2. Thử nhập "-5000" vào Số tiền 3. Lưu | Ô không nhận dấu trừ, hoặc chặn lưu với thông báo lỗi |
 | 1.12.4 | ☐ | Nhập chữ vào ô Số tiền | 1. Mở Thêm phiếu 2. Gõ "abc" vào ô Số tiền 3. Quan sát | Ô chỉ nhận ký tự số, bỏ qua chữ cái |
-| 1.12.5 | ☐ | Mô tả đúng 50 ký tự (biên) | 1. Mở Thêm phiếu 2. Nhập đúng 50 ký tự vào Mô tả, xem counter "50/50" 3. Thử nhập ký tự thứ 51 | Bộ đếm dừng ở 50/50; không nhập thêm được ký tự thứ 51 |
+| 1.12.5 | ☐ | Mô tả đúng 200 ký tự (biên) | 1. Mở Thêm phiếu 2. Nhập đúng 200 ký tự vào Mô tả, xem counter "200/200" 3. Thử nhập ký tự thứ 201 | Bộ đếm dừng ở 200/200; không nhập thêm được ký tự thứ 201 (giới hạn thực tế là 200, không phải 50) |
 | 1.12.6 | ☐ | Mô tả ký tự đặc biệt & emoji | 1. Mở Thêm phiếu 2. Nhập Mô tả có ký tự đặc biệt (!@#), tiếng Việt có dấu, emoji 3. Lưu & xem lại chi tiết | Lưu & hiển thị đúng ký tự đã nhập, không lỗi hiển thị |
 | 1.12.7 | ☐ | Bỏ trống Loại nhân sự / Người nộp | 1. Mở Thêm phiếu, chọn Loại=Thu, nhập Số tiền 2. Bỏ trống Loại nhân sự & Người nộp 3. Lưu | Ghi nhận: hệ thống cho lưu (không bắt buộc) hay chặn — đối chiếu kỳ vọng nghiệp vụ |
 | 1.12.8 | ☐ | Liên động Loại nhân sự → Người nộp | 1. Mở Thêm phiếu 2. Chọn Loại nhân sự "Thu ngân" → xem Người nộp 3. Đổi sang "Quản lý" → xem lại | Người nộp tự lọc theo vai trò (Thu ngân → casher2…; Quản lý → danh sách quản lý) |
@@ -236,7 +271,9 @@
 | 1.15.2 | ☐ | Chọn nhiều Loại nguồn cùng lúc | 1. Bật lọc Loại nguồn, tích "Bán hàng" + "Tự tạo" 2. Quan sát danh sách | Hiện phiếu thuộc cả 2 nguồn đã chọn (multi-select hợp nhất) |
 | 1.15.3 | ☐ | Phiếu "Tự tạo" = phiếu thủ công | 1. Tạo 1 phiếu thủ công 2. Lọc Loại nguồn = "Tự tạo" 3. Tìm phiếu vừa tạo | Phiếu thủ công vừa tạo xuất hiện trong nhóm "Tự tạo" |
 | 1.15.4 | ☐ | Đối chiếu Bán hàng với đơn gốc | 1. Hoàn tất 1 đơn bán (VD 250.000, Chuyển khoản) 2. Lọc Loại nguồn = Bán hàng 3. Tìm phiếu tương ứng | Phiếu Thu, số tiền = 250.000, PTTT = Chuyển khoản, khớp đơn gốc |
+<!-- TẠM ẨN — chức năng Trả hàng đang pending; bật lại khi hoàn thiện
 | 1.15.5 | ☐ | Đối chiếu Trả hàng với đơn gốc | 1. Thực hiện 1 phiếu trả hàng 2. Lọc Loại nguồn = Trả hàng 3. Tìm phiếu | Phiếu Chi (hoàn tiền), số tiền = giá trị hàng trả, khớp đơn gốc |
+-->
 
 ---
 
@@ -269,6 +306,6 @@
 | 1.18.1 | ☐ | Danh sách rỗng hiển thị đúng | 1. Lọc đến tổ hợp không có phiếu 2. Quan sát vùng bảng | Hiện thông báo "Không có dữ liệu"/empty state, không vỡ giao diện |
 | 1.18.2 | ☐ | Tải lại khi kẹt "lớp phủ ma" | 1. Khi dropdown/modal bị kẹt overlay 2. Tải lại trang (F5) 3. Thao tác lại | Sau khi tải lại, giao diện hoạt động bình thường (quirk môi trường Flutter cần lưu ý) |
 | 1.18.3 | ☐ | Đóng modal bằng Esc / click ngoài | 1. Mở modal Thêm phiếu 2. Nhấn Esc hoặc click vùng ngoài modal | Modal đóng lại, không tạo phiếu |
-| 1.18.4 | ☐ | Lỗi mạng khi Lưu | 1. Mở Thêm phiếu, điền hợp lệ 2. (Nếu mô phỏng được) ngắt mạng rồi bấm Tạo mới | Hiện thông báo lỗi mạng rõ ràng, không tạo phiếu trùng/rác |
+| 1.18.4 | ☐ | Lỗi mạng khi Lưu | 1. Mở Thêm phiếu, điền hợp lệ 2. Mở Chrome DevTools (F12) → tab Network → đặt Throttling = "Offline" 3. Bấm "Tạo mới" 4. Đặt lại Network = "No throttling" (online), kiểm tra danh sách phiếu | Hiện thông báo lỗi mạng rõ ràng; sau khi online lại, không tạo phiếu trùng/rác |
 
 ---

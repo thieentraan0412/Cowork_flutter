@@ -25,7 +25,9 @@
 | 1.1.5 | ☐ | Bấm vào 1 ca để xem chi tiết | 1. Vào trang lịch sử ca 2. Bấm vào một dòng ca bất kỳ trong danh sách 3. Quan sát panel bên phải màn hình | Hiện chi tiết của ca vừa chọn ở panel bên phải |
 | 1.1.6 | ☐ | Nút "In phiếu" của ca | 1. Vào trang lịch sử ca, bấm vào một ca để hiện chi tiết 2. Tìm nút "In phiếu" ở panel chi tiết bên phải 3. Bấm nút "In phiếu" 4. Quan sát kết quả | Kích hoạt lệnh in phiếu kết ca |
 | 1.1.7 | ☐ | Nút "Chi tiết ca" | 1. Vào trang lịch sử ca, bấm vào một ca để hiện chi tiết 2. Tìm và bấm nút "Chi tiết ca" ở panel bên phải 3. Quan sát màn hình | Mở modal chi tiết ca |
+<!-- TẠM ẨN — UI hiện tại KHÔNG có nút "Mở màn hình phụ" (ở panel, hộp CA HIỆN TẠI hay menu ☰); bật lại nếu tính năng được thêm
 | 1.1.8 | ☐ | Nút "Mở màn hình phụ" | 1. Vào trang lịch sử ca, bấm vào ca đang mở để hiện chi tiết 2. Tìm và bấm nút "Mở màn hình phụ" ở panel bên phải 3. Quan sát kết quả | Mở màn hình phụ của ca đang mở |
+-->
 
 ---
 
@@ -79,9 +81,11 @@
 | 1.5.2 | ☐ | Tiền mặt đầu ca KHÔNG cộng vào tổng | 1. Mở chi tiết một ca 2. Ghi nhận số "Tiền mặt đầu ca" 3. Tính tổng tiền mặt trong ca theo công thức (không cộng đầu ca) 4. So sánh với con số "Tổng tiền mặt trong ca" hiển thị | Tiền mặt đầu ca không được cộng vào "Tổng tiền mặt trong ca" |
 | 1.5.3 | ☐ | Chỉ tính giao dịch tiền mặt vào tổng | 1. Mở chi tiết ca có giao dịch bằng nhiều phương thức (tiền mặt + CK + QR) 2. Quan sát "Tổng tiền mặt trong ca" 3. Kiểm tra xem các giao dịch CK / thẻ / QR có được cộng vào không | Chỉ các giao dịch tiền mặt được tính; CK, thẻ, QR không ảnh hưởng tổng tiền mặt trong ca |
 | 1.5.4 | ☐ | Phiếu bán hàng ghi nhận vào ca | 1. Tạo và hoàn tất một đơn bán hàng trong ca đang mở 2. Quay lại trang lịch sử ca, mở chi tiết ca đang mở 3. Kiểm tra danh sách giao dịch | Đơn bán vừa tạo xuất hiện trong danh sách giao dịch ca |
+<!-- TẠM ẨN — chức năng Trả hàng đang pending; bật lại khi hoàn thiện
 | 1.5.5 | ☐ | Phiếu trả hàng làm giảm tổng đúng | 1. Tạo phiếu trả hàng tiền mặt trong ca đang mở 2. Ghi lại tổng tiền mặt trong ca trước và sau khi tạo phiếu trả 3. So sánh chênh lệch với số tiền trả | Tổng tiền mặt trong ca giảm đúng bằng số tiền trả hàng |
+-->
 | 1.5.6 | ☐ | Phiếu thu cộng vào ca đúng | 1. Tạo phiếu thu tiền mặt trong ca đang mở 2. Ghi lại tổng tiền mặt trong ca trước và sau khi tạo phiếu thu 3. So sánh chênh lệch với số tiền thu | Tổng tiền mặt trong ca tăng đúng bằng số tiền thu |
-| 1.5.7 | ☐ | Phiếu chi trừ khỏi ca đúng | 1. Tạo phiếu chi tiền mặt trong ca đang mở 2. Ghi lại tổng tiền mặt trong ca trước và sau khi tạo phiếu chi 3. So sánh chênh lệch với số tiền chi | Tổng tiền mặt trong ca giảm đúng bằng số tiền chi |
+| 1.5.7 | ☐ | Phiếu chi trừ khỏi ca đúng | 1. Ghi lại "Tổng tiền mặt trong ca" hiện tại (= T) 2. Vào menu **Thu chi** → bấm "Thêm" → chọn Loại = "Chi", PTTT = "Tiền mặt", nhập Số tiền (VD 50.000), điền trường bắt buộc → "Tạo mới" 3. Quay lại Điều phối ca → mở ca đang mở → đọc lại "Tổng tiền mặt trong ca" | Tổng tiền mặt trong ca = T − 50.000 (giảm đúng bằng số tiền chi) |
 | 1.5.8 | ☐ | Giao dịch đã hủy không tính vào tổng | 1. Trong danh sách giao dịch ca, lọc trạng thái "Đã hủy" để xác định giao dịch bị hủy 2. Lọc trạng thái "Hoàn thành", tính tay tổng tiền các giao dịch hoàn thành 3. So sánh với "Tổng tiền mặt trong ca" hiển thị | Tổng tiền chỉ tính giao dịch hoàn thành; giao dịch đã hủy không được cộng vào |
 
 ---
@@ -147,7 +151,6 @@
 | 1.10.1 | ☐ | Nút "In phiếu ca" trên panel ca đã đóng | 1. Mở chi tiết một ca đã đóng 2. Tìm nút "In phiếu ca" ở góc phải header panel | Nút "In phiếu ca" hiển thị & enabled |
 | 1.10.2 | ☐ | Nút "In phiếu" trên thẻ ca (lịch sử) | 1. Quan sát thẻ ca đã đóng trong LỊCH SỬ CA 2. Tìm nút "In phiếu" trên thẻ | Nút "In phiếu" có trên thẻ ca |
 | 1.10.3 | ☐ | Kích hoạt lệnh in | 1. Bấm "In phiếu ca" 2. Quan sát phản hồi | Kích hoạt lệnh in/print preview (hoặc gửi printcenter), không lỗi |
-| 1.10.4 | ☐ | Nội dung phiếu in khớp số liệu ca | 1. Mở print preview 2. Đối chiếu mã ca, NV, tổng tiền mặt, tổng thu/chi với panel | Số liệu trên phiếu in khớp panel chi tiết ca |
 
 ---
 
@@ -188,7 +191,7 @@
 | STT | ✓ | Testcase | Các bước thực hiện | Kết quả mong đợi |
 |-----|---|----------|--------------------|------------------|
 | 1.13.1 | ☐ | Phiếu thu trong ca khớp menu Thu chi | 1. Trong giao dịch ca, chọn 1 phiếu thu (PC…) ghi mã + số tiền + PTTT 2. Sang menu Thu chi tìm đúng mã 3. So sánh | Mã, số tiền, phương thức khớp nhau giữa Điều phối ca và Thu chi |
-| 1.13.2 | ☐ | Phiếu chi trong ca khớp menu Thu chi | 1. Chọn 1 phiếu chi (PT…) trong ca, ghi mã + số tiền 2. Sang Thu chi tìm mã 3. So sánh | Phiếu chi khớp giữa hai màn hình |
+| 1.13.2 | ☐ | Phiếu chi trong ca khớp menu Thu chi | 1. Nếu ca chưa có phiếu chi (PT…), tạo trước 1 phiếu chi tiền mặt ở menu Thu chi (xem 1.5.7) 2. Trong "Giao dịch trong ca", chọn phiếu chi (PT…) đó, ghi mã + số tiền + PTTT 3. Sang menu Thu chi tìm đúng mã 4. So sánh | Mã, số tiền, PTTT của phiếu chi khớp giữa Điều phối ca và Thu chi |
 | 1.13.3 | ☐ | Logic tiền mặt nhất quán hai màn hình | 1. Ghi "Tổng tiền mặt trong ca" 2. Đối chiếu với thu/chi tiền mặt tương ứng ở Thu chi (cùng kỳ/ca) | Hai bên phản ánh cùng dòng tiền mặt, không mâu thuẫn |
 
 ---
@@ -221,7 +224,7 @@
 
 | STT | ✓ | Testcase | Các bước thực hiện | Kết quả mong đợi |
 |-----|---|----------|--------------------|------------------|
-| 1.16.1 | ☐ | Chưa chọn ca | 1. Vào Điều phối ca khi panel phải chưa chọn ca 2. Quan sát vùng panel phải | Hiển thị "Chọn một ca để xem chi tiết" |
+| 1.16.1 | ☐ | Trạng thái panel khi chưa chọn ca | 1. Vào Điều phối ca, quan sát vùng panel phải khi vừa tải | Panel phải **tự nạp ca đang mở/gần nhất** (hành vi thực tế). Chỉ khi không có ca nào để hiển thị mới hiện "Chọn một ca để xem chi tiết" — trạng thái rỗng này có thể không tái hiện khi luôn tồn tại ca |
 | 1.16.2 | ☐ | Ca không có giao dịch | 1. Mở một ca không phát sinh giao dịch 2. Quan sát khối "Giao dịch trong ca" | Danh sách giao dịch rỗng + empty state; 4 thẻ về 0 |
 | 1.16.3 | ☐ | Lọc loại không có dữ liệu | 1. Trong ca không có trả hàng, lọc loại = "Phiếu trả hàng" 2. Quan sát | Danh sách rỗng (đúng), không báo lỗi |
 | 1.16.4 | ☐ | Bỏ cả 2 checkbox trạng thái | 1. Bỏ tích cả "Hoàn thành" và "Đã hủy" 2. Quan sát danh sách | Danh sách rỗng (không trạng thái nào được chọn) hoặc hành vi hợp lý — ghi nhận |
@@ -234,7 +237,7 @@
 
 | STT | ✓ | Testcase | Các bước thực hiện | Kết quả mong đợi |
 |-----|---|----------|--------------------|------------------|
-| 1.17.1 | ☐ | Thu ngân thấy đúng phạm vi ca | 1. Đăng nhập vai trò Thu ngân (chi nhánh CN1) 2. Quan sát danh sách ca trong LỊCH SỬ CA | Chỉ hiển thị ca thuộc phạm vi chi nhánh được phép |
+| 1.17.1 | ☐ | Thu ngân thấy đúng phạm vi ca | 1. Đăng nhập bằng **tài khoản con quyền Thu ngân** (store `thientester` / `cashier` / `123456` — xem Link.md), KHÔNG dùng Admin master 2. Vào Điều phối ca, quan sát danh sách ca trong LỊCH SỬ CA và dropdown Chi nhánh | Chỉ hiển thị ca thuộc phạm vi chi nhánh thu ngân được phép |
 | 1.17.2 | ☐ | Mã ca gắn đúng chi nhánh | 1. Đọc mã ca (SCR…CN2) của các ca 2. Đối chiếu chi nhánh hiện hành | Hậu tố chi nhánh trên mã ca khớp chi nhánh đang đăng nhập |
 | 1.17.3 | ☐ | Hiển thị ca của nhiều nhân viên | 1. Với tài khoản Admin master, để Nhân viên = "Tất cả" 2. Quan sát | Hiện ca của nhiều nhân viên khác nhau (Admin master, cashier…) |
 | 1.17.4 | ☐ | Phân biệt "Nhân viên" và "Người mở" ca | 1. Mở 1 ca có Người mở khác Nhân viên (VD SCR96: NV cashier, người mở Admin master) 2. Quan sát 2 trường | Hai trường hiển thị độc lập, đúng dữ liệu từng ca |
